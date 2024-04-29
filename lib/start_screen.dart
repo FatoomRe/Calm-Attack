@@ -5,6 +5,21 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return const Center(child: Text('Start Screen'));
+    return Center(
+      child: Column(
+        children: [
+          Image.asset(
+            'assets/img1.png',
+            width: 320,
+          ),
+          TextButton(
+            onPressed: () { //<-- thie call annonimous function
+              //... here we can add the code to navigate to the next screen
+            },
+            child: const Text('Get Started'),
+          ),
+        ],
+      ),
+    );
   }
 }
