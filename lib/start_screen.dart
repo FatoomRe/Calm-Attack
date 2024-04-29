@@ -8,6 +8,7 @@ class StartScreen extends StatelessWidget {
     return Center(
       child: Column(
         children: [
+          SizedBox(height: 100), //<-- add this line to add some space between the top and the image
           Image.asset(
             'assets/img1.png',
             width: 320,
