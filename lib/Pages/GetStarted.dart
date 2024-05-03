@@ -40,7 +40,7 @@ class StartScreen extends StatelessWidget {
           ),
         ),
         ],
-      ), 
+      ),
     );
   }
 }
