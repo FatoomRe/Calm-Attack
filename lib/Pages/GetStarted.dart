@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -18,9 +19,12 @@ class StartScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20), //<-- add this line to add some space between the top and the image
-          Image.asset(
-            'assets/img1.png',
-            width: 320,
+          Transform.rotate(
+             angle: -17.8 * pi / 180, //<-- rotate the image
+            child: Image.asset(
+              'assets/img1.png',
+              width: 320,
+            ),
           ),
           const SizedBox(height: 80), //<-- add this line to add some space between the image and the text
           ElevatedButton(
