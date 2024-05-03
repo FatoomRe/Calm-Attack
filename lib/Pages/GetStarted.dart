@@ -23,14 +23,14 @@ class StartScreen extends StatelessWidget {
             width: 320,
           ),
           const SizedBox(height: 80), //<-- add this line to add some space between the image and the text
-          TextButton(
+          ElevatedButton(
             onPressed: () { //<-- thie call annonimous function
               //... here we can add the code to navigate to the next screen
             },
             child: const Text(
               'Get Started',
               style: TextStyle(
-                color: Colors.white,
+                color: Color.fromARGB(255, 5, 0, 0),
                 fontSize: 20,
               ),
           ),
