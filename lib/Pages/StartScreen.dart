@@ -1,3 +1,4 @@
+import 'package:calmattack/Pages/SecondScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -28,8 +29,10 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 80), //<-- add this line to add some space between the image and the text
           ElevatedButton(
-            onPressed: () { //<-- thie call annonimous function
-              //... here we can add the code to navigate to the next screen
+            onPressed: () {
+              Navigator.push(context,
+               MaterialPageRoute(builder: (context) => const SecondScreen()),
+              );
             },
             child: const Text(
               'Get Started',
