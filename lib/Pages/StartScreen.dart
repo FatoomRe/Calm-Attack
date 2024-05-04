@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, deprecated_member_use
+
 import 'package:calmattack/Pages/SecondScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -34,13 +36,17 @@ class StartScreen extends StatelessWidget {
                MaterialPageRoute(builder: (context) => const SecondScreen()),
               );
             },
+          style: ElevatedButton.styleFrom(
+            primary: const Color(0xff0F073E),
+          ),
             child: const Text(
               'Get Started',
               style: TextStyle(
-                color: Color.fromARGB(255, 5, 0, 0),
+                color: Colors.white,
                 fontSize: 20,
               ),
           ),
+
         ),
         ],
       ),
