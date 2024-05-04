@@ -19,6 +19,7 @@ class StartScreen extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 43,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 20), //<-- add this line to add some space between the top and the image
@@ -44,6 +45,7 @@ class StartScreen extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
           ),
 
