@@ -9,73 +9,153 @@ class BreathingScreen extends StatelessWidget {
   @override
   Widget build(context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(''),
-        ),
         body: Column(
-          children: [
-            Row(
+      children: [
+        const SizedBox(height: 30),
+        IntrinsicHeight(
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            child: Row(
               children: [
                 Expanded(
                   child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
+                      //color: Colors.red,
+                      height: 100,
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '3',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Seconds',
+                            style: TextStyle(
+                              fontSize: 10,
+                            ),
+                          ),
+                          Text(
+                            'INHALE',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      ),
+                ),
+                const VerticalDivider(
+                  color: Colors.black,
+                  thickness: 2.5,
+                  indent: 26,
+                  endIndent: 15,
                 ),
                 Expanded(
                   child: Container(
-                    color: Colors.green,
+                    //color: Colors.green,
                     height: 100,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '3',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Seconds',
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          'HOLD',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                ),
+                const VerticalDivider(
+                  color: Colors.black,
+                  thickness: 2.5,
+                  indent: 26,
+                  endIndent: 15,
                 ),
                 Expanded(
                   child: Container(
-                    color: Colors.blue,
+                    //color: Colors.blue,
                     height: 100,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '3',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Seconds',
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          'EXHALE',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              'INHALE',
+          ),
+        ),
+        const SizedBox(height: 10),
+        const Text(
+          'INHALE',
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 70),
+        Image.asset(
+          'assets/c1 1.png',
+          width: 160,
+        ),
+        const SizedBox(height: 160),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ThirdScreen()));
+          },
+          style: ElevatedButton.styleFrom(
+            primary: const Color(0xff0F073E),
+          ),
+          child: const Text('      Next      ',
               style: TextStyle(
-                fontSize: 30,
+                color: Colors.white,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Image.asset(
-              'assets/c1 1.png',
-              width: 200,
-            ),
-            const SizedBox(
-              height: 140,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ThirdScreen()));
-              },
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xff0F073E),
-              ),
-              child: const Text(
-                '       Next       ',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          ],
-        ));
+              )),
+        ),
+      ],
+    ));
   }
 }
