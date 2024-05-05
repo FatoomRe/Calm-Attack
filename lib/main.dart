@@ -3,7 +3,6 @@ import 'package:calmattack/Pages/StartScreen.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'Debug Banner',
     debugShowCheckedModeBanner: false,
     home: Scaffold(
         body: Container(
