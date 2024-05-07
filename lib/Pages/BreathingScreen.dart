@@ -1,11 +1,17 @@
 // ignore_for_file: file_names
 
+import 'package:calmattack/Animations/BreathingCloud.dart';
 import 'package:calmattack/Pages/ThirdScreen.dart';
 import 'package:flutter/material.dart';
 
-class BreathingScreen extends StatelessWidget {
+class BreathingScreen extends StatefulWidget {
   const BreathingScreen({super.key});
 
+  @override
+  State<BreathingScreen> createState() => _BreathingScreenState();
+}
+
+class _BreathingScreenState extends State<BreathingScreen> {
   @override
   Widget build(context) {
     return Scaffold(
@@ -18,35 +24,36 @@ class BreathingScreen extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
+                  // ignore: sized_box_for_whitespace
                   child: Container(
-                      //color: Colors.red,
-                      height: 100,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    //color: Colors.red,
+                    height: 100,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '3',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Text(
-                            'Seconds',
-                            style: TextStyle(
-                              fontSize: 10,
-                            ),
+                        ),
+                        Text(
+                          'Seconds',
+                          style: TextStyle(
+                            fontSize: 10,
                           ),
-                          Text(
-                            'INHALE',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        ),
+                        Text(
+                          'INHALE',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
-                      ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 const VerticalDivider(
                   color: Colors.black,
@@ -55,6 +62,7 @@ class BreathingScreen extends StatelessWidget {
                   endIndent: 15,
                 ),
                 Expanded(
+                  // ignore: sized_box_for_whitespace
                   child: Container(
                     //color: Colors.green,
                     height: 100,
@@ -92,6 +100,7 @@ class BreathingScreen extends StatelessWidget {
                   endIndent: 15,
                 ),
                 Expanded(
+                  // ignore: sized_box_for_whitespace
                   child: Container(
                     //color: Colors.blue,
                     height: 100,
@@ -134,26 +143,33 @@ class BreathingScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 70),
-        Image.asset(
-          'assets/c1 1.png',
-          width: 160,
-        ),
         const SizedBox(height: 160),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ThirdScreen()));
-          },
-          style: ElevatedButton.styleFrom(
-            primary: const Color(0xff0F073E),
+        const BreathingCloud(), //--> animation image
+        const SizedBox(height: 160),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          // ignore: sized_box_for_whitespace
+          child: Container(
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ThirdScreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                // ignore: deprecated_member_use
+                primary: const Color(0xff0F073E),
+              ),
+              child: const Text('      Next      ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
           ),
-          child: const Text('      Next      ',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              )),
         ),
       ],
     ));
