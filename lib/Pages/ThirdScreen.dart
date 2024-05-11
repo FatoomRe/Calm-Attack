@@ -21,7 +21,7 @@ class ThirdScreen extends StatelessWidget {
         child:
          Column(
           children: [
-            const SizedBox(height: 60),
+            const SizedBox(height: 40),
             const Text(
               'Focus on',
               style: TextStyle(
@@ -64,7 +64,7 @@ class ThirdScreen extends StatelessWidget {
               height: 200,),
               ),
             ),
-            const SizedBox(height: 30,),
+            const SizedBox(height: 40,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -86,13 +86,16 @@ class ThirdScreen extends StatelessWidget {
               ),
               
               child: IconButton(
-                icon: const Icon(Icons.fast_rewind), // Set the icon here
+                icon: const Icon(
+                  Icons.fast_rewind,
+                  size: 40,
+                  color:  Color(0xff0F073E),), // Set the icon here
                 onPressed: () {
                   // Add your onPressed code here
                 },
               ),
             ),
-            const SizedBox(width: 25),
+            const SizedBox(width: 35),
 
             //---------------------------------------------------------------
             Container(
@@ -113,13 +116,14 @@ class ThirdScreen extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(
                   Icons.play_arrow,
+                  size: 40,
                   color: Color(0xffEBF4FD),), // Set the icon here
                 onPressed: () {
                   // Add your onPressed code here
                 },
               ),
             ),
-            const SizedBox(width: 25),
+            const SizedBox(width: 35),
             //-----------------------------------------------------------------------
             Container(
               width: 60,
@@ -137,7 +141,10 @@ class ThirdScreen extends StatelessWidget {
                 ],
               ),
               child: IconButton(
-                icon: const Icon(Icons.fast_forward), // Set the icon here
+                icon: const Icon(
+                  Icons.fast_forward,
+                  size: 40,
+                  color: Color(0xff0F073E),), // Set the icon here
                 onPressed: () {
                   // Add your onPressed code here
                 },
@@ -145,8 +152,8 @@ class ThirdScreen extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 40,),
-        // ignore: sized_box_for_whitespace
+        const SizedBox(height: 45,),
+        // ignore: sized_box_for_whitespace //-------------------------------------
         Container(
             height: 50,
             child: ElevatedButton(
@@ -154,6 +161,7 @@ class ThirdScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 // ignore: deprecated_member_use
                 primary: const Color(0xff0F073E),
+                elevation: 9,
               ),
               child: const Text('      Next      ',
                   style: TextStyle(
@@ -163,6 +171,7 @@ class ThirdScreen extends StatelessWidget {
                   )),
             ),
           ),
+          TextButton(onPressed: (){}, child: const Text('Finish Session'))
           ],
         ),
       ),
