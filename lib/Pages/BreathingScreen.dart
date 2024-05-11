@@ -6,12 +6,20 @@ import 'package:flutter/material.dart';
 
 class BreathingScreen extends StatefulWidget {
   const BreathingScreen({super.key});
-  
+
   @override
   State<BreathingScreen> createState() => _BreathingScreenState();
 }
 
 class _BreathingScreenState extends State<BreathingScreen> {
+  String _breathingText = 'INHALE';
+
+  void _updateBreathingText(String text) {
+    setState(() {
+      _breathingText = text;
+    });
+  }
+
   @override
   Widget build(context) {
     return Scaffold(
@@ -136,15 +144,15 @@ class _BreathingScreenState extends State<BreathingScreen> {
           ),
         ),
         const SizedBox(height: 10),
-        const Text(
-          'INHALE',
-          style: TextStyle(
+         Text(
+          _breathingText,
+          style: const TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 160),
-        const BreathingCloud(), //--> animation image
+        BreathingCloud(callback: _updateBreathingText), //--> animation image
         const SizedBox(height: 160),
         Padding(
           padding: const EdgeInsets.all(10.0),

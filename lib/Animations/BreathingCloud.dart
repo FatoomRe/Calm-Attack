@@ -1,16 +1,21 @@
 // ignore: file_names
-// BreathingCloud.dart
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 class BreathingCloud extends StatefulWidget {
-  const BreathingCloud({Key? key}) : super(key: key);
+  final Function(String) callback;
+
+  const BreathingCloud({Key? key, required this.callback}) : super(key: key);
+
 
   @override
+  
   _BreathingCloudState createState() => _BreathingCloudState();
 }
 
-class _BreathingCloudState extends State<BreathingCloud> with SingleTickerProviderStateMixin {
+class _BreathingCloudState extends State<BreathingCloud>
+ with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
   String _imagePath = 'assets/INHALE.png';
@@ -31,20 +36,25 @@ class _BreathingCloudState extends State<BreathingCloud> with SingleTickerProvid
         curve: Curves.easeInOut,
       ),
     );
+
+
      _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         setState(() {
           _imagePath = 'assets/HOLD.png';
+          widget.callback('HOLD');
         });
         Timer(const Duration(seconds: 3), () {
           setState(() {
             _imagePath = 'assets/EXHALE.png';
+            widget.callback('EXHALE');
           });
           _controller.reverse();
         });
       } else if (status == AnimationStatus.dismissed) {
         setState(() {
           _imagePath = 'assets/INHALE.png';
+          widget.callback('INHALE');
         });
         _controller.forward();
       }
@@ -76,3 +86,4 @@ class _BreathingCloudState extends State<BreathingCloud> with SingleTickerProvid
     super.dispose();
   }
 }
+
