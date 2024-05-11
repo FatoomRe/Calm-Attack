@@ -18,14 +18,15 @@ class ThirdScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white, // Set the background color here
       body: Center(
-        child: Column(
+        child:
+         Column(
           children: [
-            const SizedBox(height: 75),
+            const SizedBox(height: 60),
             const Text(
               'Focus on',
               style: TextStyle(
                 color: Color(0xff0F073E),
-                fontSize: 40,
+                fontSize: 35,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -34,12 +35,134 @@ class ThirdScreen extends StatelessWidget {
               child: const Text(
                 'Waves',
                 style: TextStyle(
-                  fontSize: 40,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
             ),
+            const SizedBox(height: 30,),
+            //-------------------------------------------------------------------------
+            Container(
+              width: 270,
+              height: 260,
+              decoration: BoxDecoration(
+                color: const Color(0xffEBF4FD),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.7),
+                    spreadRadius: 0.1,
+                    blurRadius: 1,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Image.asset('assets/lines1.png',
+              width: 200,
+              height: 200,),
+              ),
+            ),
+            const SizedBox(height: 30,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //-----------------------------------------------------------------------------
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: const Color(0xffEBF4FD),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.7),
+                    spreadRadius: 0.1,
+                    blurRadius: 1,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              
+              child: IconButton(
+                icon: const Icon(Icons.fast_rewind), // Set the icon here
+                onPressed: () {
+                  // Add your onPressed code here
+                },
+              ),
+            ),
+            const SizedBox(width: 25),
+
+            //---------------------------------------------------------------
+            Container(
+              width: 60,
+              height: 60,
+               decoration: BoxDecoration(
+                color: const Color(0xff0F073E),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.7),
+                    spreadRadius: 0.1,
+                    blurRadius: 1,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.play_arrow,
+                  color: Color(0xffEBF4FD),), // Set the icon here
+                onPressed: () {
+                  // Add your onPressed code here
+                },
+              ),
+            ),
+            const SizedBox(width: 25),
+            //-----------------------------------------------------------------------
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: const Color(0xffEBF4FD),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.7),
+                    spreadRadius: 0.1,
+                    blurRadius: 1,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.fast_forward), // Set the icon here
+                onPressed: () {
+                  // Add your onPressed code here
+                },
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 40,),
+        // ignore: sized_box_for_whitespace
+        Container(
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                // ignore: deprecated_member_use
+                primary: const Color(0xff0F073E),
+              ),
+              child: const Text('      Next      ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          ),
           ],
         ),
       ),
