@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:calmattack/Pages/FourthScreen.dart';
 import 'package:flutter/material.dart';
 
 class ThirdScreen extends StatelessWidget {
@@ -6,6 +7,8 @@ class ThirdScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //=========================================================== wave color
 
     final Shader linearGradient = const LinearGradient(
       colors: <Color>[Color(0xff3E3BD4), Color(0xff1AAC9B)],
@@ -157,7 +160,12 @@ class ThirdScreen extends StatelessWidget {
         Container(
             height: 50,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FourthScreen()));
+              },
               style: ElevatedButton.styleFrom(
                 // ignore: deprecated_member_use
                 primary: const Color(0xff0F073E),
@@ -171,7 +179,7 @@ class ThirdScreen extends StatelessWidget {
                   )),
             ),
           ),
-          TextButton(onPressed: (){}, child: const Text('Finish Session'))
+          TextButton(onPressed: (){}, child: const Text('Finish Session')),
           ],
         ),
       ),

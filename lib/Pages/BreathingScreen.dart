@@ -12,7 +12,7 @@ class BreathingScreen extends StatefulWidget {
 }
 
 class _BreathingScreenState extends State<BreathingScreen> {
-  String _breathingText = 'INHALE';
+  String _breathingText = 'INHALE'; 
 
   void _updateBreathingText(String text) {
     setState(() {
