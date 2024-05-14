@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Pages/FourthScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -62,9 +63,9 @@ class ThirdScreen extends StatelessWidget {
                 ],
               ),
               child: Center(
-                child: Image.asset('assets/lines1.png',
-              width: 200,
-              height: 200,),
+                child: AudioSpectrumLines(),
+              // width: 200,
+              // height: 200,),
               ),
             ),
             const SizedBox(height: 40,),

@@ -1,18 +1,54 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 
-class AudioSpectrumLines extends StatelessWidget {
+class AudioSpectrumLines extends StatefulWidget {
   const AudioSpectrumLines({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: List.generate( 6, (index) => Container(
-        height: 30,
-        width: 5,
-        color: const Color(0xff0F073E),
-      ),),
-    );
-  }
+  State<AudioSpectrumLines> createState() => _AudioSpectrumLinesState();
 }
+
+class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
+ with TickerProviderStateMixin {
+  
+  late AnimationController controller;
+
+  @override
+  void initState() {
+  super.initState();
+  controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 2000), 
+  )..repeat();
+}
+  @override
+Widget build(BuildContext context) {
+  const count = 7;
+  final random = math.Random();
+
+  return AnimatedBuilder(
+    animation: controller,
+    builder: (BuildContext context, Widget? child) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(count, (index) {
+          final height = 50.0 + random.nextDouble() * 50;
+
+          return Container(
+            margin: index == (count - 1)
+                ? EdgeInsets.zero
+                : const EdgeInsets.only(right: 5),
+            height: height, 
+            width: 10,
+            decoration: BoxDecoration(
+              color: const Color(0xff0F073E),
+              borderRadius: BorderRadius.circular(9999),
+            ),
+          );
+        }),
+      );
+    },
+  );
+}}
