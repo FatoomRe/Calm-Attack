@@ -97,7 +97,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
               
               child: IconButton(
                 icon: const Icon(
-                  Icons.fast_rewind,
+                  Icons.skip_previous,
                   size: 40,
                   color:  Color(0xff0F073E),), // Set the icon here
                 onPressed: () {
@@ -152,7 +152,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
               ),
               child: IconButton(
                 icon: const Icon(
-                  Icons.fast_forward,
+                  Icons.skip_next,
                   size: 40,
                   color: Color(0xff0F073E),), // Set the icon here
                 onPressed: () {

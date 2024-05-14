@@ -8,7 +8,7 @@ class FourthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const Scaffold(
       body: Center(
-        child: AudioSpectrumLines(),
+        //child: AudioSpectrumLines(),
       ),
     );
   }
