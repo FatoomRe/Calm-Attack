@@ -1,11 +1,17 @@
 // ignore_for_file: file_names
-import 'package:calmattack/Animations/AudioSpectrumLines.dart';
+//import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Pages/FourthScreen.dart';
 import 'package:flutter/material.dart';
-
-class ThirdScreen extends StatelessWidget {
+class ThirdScreen extends StatefulWidget {
   const ThirdScreen({super.key});
 
+  @override
+  State<ThirdScreen> createState() => _ThirdScreenState();
+}
+
+class _ThirdScreenState extends State<ThirdScreen> {
+  
+  
   @override
   Widget build(BuildContext context) {
 
@@ -62,8 +68,8 @@ class ThirdScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Center(
-                child: AudioSpectrumLines(),
+              child: const Center(
+                //child: AudioSpectrumLines(),
               // width: 200,
               // height: 200,),
               ),
@@ -157,7 +163,7 @@ class ThirdScreen extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 45,),
-        // ignore: sized_box_for_whitespace //-------------------------------------
+        // ignore: sized_box_for_whitespace //-------------------------------------, sized_box_for_whitespace
         Container(
             height: 50,
             child: ElevatedButton(

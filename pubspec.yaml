@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flare_flutter: ^3.0.2
+  audioplayers: ^5.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -68,6 +69,12 @@ flutter:
     - assets/HOLD.png
     - assets/EXHALE.png
     - assets/lines1.png
+    - assets/music-1.mp3
+    - assets/music-2.mp3
+    - assets/music-3.mp3
+    - assets/music-4.mp3
+    - assets/music-5.mp3
+    - assets/music-6.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

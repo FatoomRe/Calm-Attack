@@ -1,5 +1,5 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
+
 import 'dart:math' as math;
 
 
@@ -20,7 +20,7 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
   super.initState();
   controller = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 2000), 
+    duration: const Duration(minutes: 1), 
   )..repeat();
 }
   @override
@@ -34,14 +34,14 @@ Widget build(BuildContext context) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(count, (index) {
-          final height = 50.0 + random.nextDouble() * 50;
+          final height = 40.0 + random.nextDouble() * 55;
 
           return Container(
             margin: index == (count - 1)
                 ? EdgeInsets.zero
                 : const EdgeInsets.only(right: 5),
             height: height, 
-            width: 10,
+            width: 20,
             decoration: BoxDecoration(
               color: const Color(0xff0F073E),
               borderRadius: BorderRadius.circular(9999),
