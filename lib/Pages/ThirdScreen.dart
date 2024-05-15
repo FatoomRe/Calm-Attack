@@ -18,12 +18,12 @@ class _ThirdScreenState extends State<ThirdScreen> {
   int currentSoundIndex = 0;
 
   List<String> soundTexts = [
-    'Sea Waves',
+    'Waves',
     'Rainfall',
-    'Birds Chirping',
-    'Forest Sounds',
+    'Birds',
+    'Forest',
     'Waterfall',
-    'Fireplace'
+    'Fireplace',
   ];
 
   final player = AudioPlayer();
