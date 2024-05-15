@@ -21,9 +21,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
     'Waves',
     'Rain',
     'Birds',
-    'Forest',
-    'Thunder',
     'Fire',
+    'Forest',
+    'Wind',
   ];
 
   final player = AudioPlayer();

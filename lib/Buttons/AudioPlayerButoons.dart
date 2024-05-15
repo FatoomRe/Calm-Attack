@@ -14,12 +14,12 @@ class AudioPlayerButtons extends StatefulWidget {
 class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
   final player = AudioPlayer();
   List<String> sounds = [
-    'music-1.mp3', //sea Waves            Done✔
-    'music-2.mp3', //Rainfall             Done✔
-    'music-3.mp3', //Birds Chirping
-    'music-4.mp3', //Forest Sounds
-    'music-5.mp3', //Waterfall
-    'music-6.mp3', //Fireplace
+    'music-1.mp3', //Waves      
+    'music-2.mp3', //Rain        
+    'music-3.mp3', //Birds  
+    'music-4.mp3', //Fire 
+    'music-5.mp3', //Forest
+    'music-6.mp3', //Wind        
   ];
   int currentIndex = 0;
   bool isPlaying = false;

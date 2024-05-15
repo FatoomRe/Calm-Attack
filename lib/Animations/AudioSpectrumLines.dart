@@ -1,7 +1,6 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-
-import 'dart:math' as math;
-
 
 class AudioSpectrumLines extends StatefulWidget {
   const AudioSpectrumLines({Key? key}) : super(key: key);
@@ -11,44 +10,64 @@ class AudioSpectrumLines extends StatefulWidget {
 }
 
 class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
- with TickerProviderStateMixin {
-  
-  late AnimationController controller;
+    with TickerProviderStateMixin {
+  late List<AnimationController> controllers;
+  late List<Animation<double>> animations;
+  final count = 6;
+  final random = Random();
 
   @override
   void initState() {
-  super.initState();
-  controller = AnimationController(
-    vsync: this,
-    duration: const Duration(seconds: 10), 
-  )..repeat();
-}
-  @override
-Widget build(BuildContext context) {
-  const count = 7;
-  final random = math.Random();
+    super.initState();
 
-  return AnimatedBuilder(
-    animation: controller,
-    builder: (BuildContext context, Widget? child) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: List.generate(count, (index) {
-          final height = 30.0 + random.nextDouble() * 55;
+    controllers = List.generate(count, (index) {
+  final durationMilliseconds = 20 + random.nextInt(700); 
+  return AnimationController(
+  vsync: this,
+  duration: Duration(milliseconds: durationMilliseconds),
+)..repeat(reverse: true);
+});
 
-          return Container(
-            margin: index == (count - 1)
-                ? EdgeInsets.zero
-                : const EdgeInsets.only(right: 5),
-            height: height, 
-            width: 20,
-            decoration: BoxDecoration(
-              color: const Color(0xff0F073E),
-              borderRadius: BorderRadius.circular(9999),
-            ),
-          );
-        }),
-      );
-    },
+    animations = controllers.map((controller) {
+  final beginHeight = 15.0 + random.nextDouble() * 25; 
+  final endHeight = 40.0 + random.nextDouble() * 50; 
+  return Tween<double>(begin: beginHeight, end: endHeight).animate(
+    CurvedAnimation(parent: controller, curve: Curves.easeInOut),
   );
-}}
+}).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(count, (index) {
+        return AnimatedBuilder(
+          animation: controllers[index],
+          builder: (BuildContext context, Widget? child) {
+            return Container(
+              margin: index == (count - 1)
+                  ? EdgeInsets.zero
+                  : const EdgeInsets.only(right: 11),
+              height: animations[index]
+                  .value, // Use the animation value as the height
+              width: 16,
+              decoration: BoxDecoration(
+                color: const Color(0xff0F073E),
+                borderRadius: BorderRadius.circular(9999),
+              ),
+            );
+          },
+        );
+      }),
+    );
+  }
+
+  @override
+  void dispose() {
+    for (var controller in controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+}
