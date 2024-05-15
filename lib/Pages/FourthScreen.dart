@@ -1,15 +1,19 @@
-import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
-class FourthScreen extends StatelessWidget {
-  const FourthScreen({Key? key}) : super(key: key);
+class FourthScreen extends StatefulWidget {
+  @override
+  _FourthScreenState createState() => _FourthScreenState();
+}
+
+class _FourthScreenState extends State<FourthScreen> {
+  
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
-      body: Center(
-        //child: AudioSpectrumLines(),
-      ),
+    return Scaffold(
+      body: Center(child: Container(child: Text('helloworld'))),
     );
   }
+
 }

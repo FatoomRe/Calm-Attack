@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 //import 'package:calmattack/Animations/AudioSpectrumLines.dart';
+import 'package:calmattack/Buttons/AudioPlayerButoons.dart';
 import 'package:calmattack/Pages/FourthScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 
 class ThirdScreen extends StatefulWidget {
@@ -12,6 +14,21 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class _ThirdScreenState extends State<ThirdScreen> {
+
+  final player = AudioPlayer();
+
+  AudioPlayer audioCache = AudioPlayer();
+
+  List<String> sounds = [
+    'assets/music-1.mp3',
+    'assets/music-2.mp3',
+    'assets/music-3.mp3',
+    'assets/music-4.mp3',
+    'assets/music-5.mp3',
+    'assets/music-6.mp3',
+    ];
+
+  int currentIndex = 0;
   
   
   @override
@@ -78,93 +95,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
               ),
             ),
             const SizedBox(height: 40,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //----------------------- Skip previous Button (<) -----------------
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: const Color(0xffEBF4FD),
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.7),
-                    spreadRadius: 0.1,
-                    blurRadius: 1,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              
-              child: IconButton(
-                icon: const Icon(
-                  Icons.skip_previous,
-                  size: 40,
-                  color:  Color(0xff0F073E),), // Set the icon here
-                onPressed: () {
-                  // Add your onPressed code here <---------------------------------------------------------------
-                },
-              ),
-            ),
-            const SizedBox(width: 35),
 
-            //------------------------------- Play Arrow Button (||) --------------
-            Container(
-              width: 60,
-              height: 60,
-               decoration: BoxDecoration(
-                color: const Color(0xff0F073E),
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.7),
-                    spreadRadius: 0.1,
-                    blurRadius: 1,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.play_arrow,
-                  size: 40,
-                  color: Color(0xffEBF4FD),), // Set the icon here
-                onPressed: () {
-                  // Add your onPressed code here <---------------------------------------------------------------------
-                },
-              ),
-            ),
-            const SizedBox(width: 35),
-            //------------------------------------ Skip Next Button (>) -------------
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: const Color(0xffEBF4FD),
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.7),
-                    spreadRadius: 0.1,
-                    blurRadius: 1,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.skip_next,
-                  size: 40,
-                  color: Color(0xff0F073E),),
-                onPressed: () {
-                  // Add your onPressed code here <---------------------------------------------------------------
-                },
-              ),
-            ),
-          ],
-        ),
+            const AudioPlayerButtons(), //<------------- (The AudioPlayer Buttons ) ------
+        
         const SizedBox(height: 45,),
         // ignore: sized_box_for_whitespace 
         Container(
@@ -174,7 +107,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const FourthScreen()));
+                        builder: (context) => FourthScreen()));
               },
               style: ElevatedButton.styleFrom(
                 // ignore: deprecated_member_use
