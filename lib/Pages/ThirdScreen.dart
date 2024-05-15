@@ -19,11 +19,11 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
   List<String> soundTexts = [
     'Waves',
-    'Rainfall',
+    'Rain',
     'Birds',
     'Forest',
-    'Waterfall',
-    'Fireplace',
+    'Thunder',
+    'Fire',
   ];
 
   final player = AudioPlayer();

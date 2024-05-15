@@ -34,7 +34,7 @@ Widget build(BuildContext context) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(count, (index) {
-          final height = 40.0 + random.nextDouble() * 55;
+          final height = 30.0 + random.nextDouble() * 55;
 
           return Container(
             margin: index == (count - 1)
