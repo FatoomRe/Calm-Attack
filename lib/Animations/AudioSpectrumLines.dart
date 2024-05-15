@@ -20,7 +20,7 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
   super.initState();
   controller = AnimationController(
     vsync: this,
-    duration: const Duration(minutes: 1), 
+    duration: const Duration(seconds: 10), 
   )..repeat();
 }
   @override

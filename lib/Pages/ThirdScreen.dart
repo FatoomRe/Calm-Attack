@@ -2,6 +2,8 @@
 //import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Pages/FourthScreen.dart';
 import 'package:flutter/material.dart';
+
+
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({super.key});
 
@@ -26,7 +28,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
 
     return Scaffold(
-      backgroundColor: Colors.white, // Set the background color here
+      backgroundColor: Colors.white, // Set the main background color here
       body: Center(
         child:
          Column(
@@ -40,6 +42,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            //--------------------------------------------------------------------
             ShaderMask(
                 shaderCallback: (bounds) => linearGradient,
               child: const Text(
@@ -52,7 +55,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
               ),
             ),
             const SizedBox(height: 30,),
-            //-------------------------------------------------------------------------
+            //-----------------------------the Audio Spectrum container-----------
             Container(
               width: 270,
               height: 260,
@@ -78,7 +81,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //-----------------------------------------------------------------------------
+                //----------------------- Skip previous Button (<) -----------------
             Container(
               width: 60,
               height: 60,
@@ -101,13 +104,13 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   size: 40,
                   color:  Color(0xff0F073E),), // Set the icon here
                 onPressed: () {
-                  // Add your onPressed code here
+                  // Add your onPressed code here <---------------------------------------------------------------
                 },
               ),
             ),
             const SizedBox(width: 35),
 
-            //---------------------------------------------------------------
+            //------------------------------- Play Arrow Button (||) --------------
             Container(
               width: 60,
               height: 60,
@@ -129,12 +132,12 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   size: 40,
                   color: Color(0xffEBF4FD),), // Set the icon here
                 onPressed: () {
-                  // Add your onPressed code here
+                  // Add your onPressed code here <---------------------------------------------------------------------
                 },
               ),
             ),
             const SizedBox(width: 35),
-            //-----------------------------------------------------------------------
+            //------------------------------------ Skip Next Button (>) -------------
             Container(
               width: 60,
               height: 60,
@@ -154,16 +157,16 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 icon: const Icon(
                   Icons.skip_next,
                   size: 40,
-                  color: Color(0xff0F073E),), // Set the icon here
+                  color: Color(0xff0F073E),),
                 onPressed: () {
-                  // Add your onPressed code here
+                  // Add your onPressed code here <---------------------------------------------------------------
                 },
               ),
             ),
           ],
         ),
         const SizedBox(height: 45,),
-        // ignore: sized_box_for_whitespace //-------------------------------------, sized_box_for_whitespace
+        // ignore: sized_box_for_whitespace 
         Container(
             height: 50,
             child: ElevatedButton(
