@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 //import 'package:calmattack/Animations/AudioSpectrumLines.dart';
+import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Buttons/AudioPlayerButoons.dart';
 import 'package:calmattack/Pages/FourthScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-
 
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({super.key});
@@ -14,6 +14,17 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class _ThirdScreenState extends State<ThirdScreen> {
+
+  int currentSoundIndex = 0;
+
+  List<String> soundTexts = [
+    'Sea Waves',
+    'Rainfall',
+    'Birds Chirping',
+    'Forest Sounds',
+    'Waterfall',
+    'Fireplace'
+  ];
 
   final player = AudioPlayer();
 
@@ -26,14 +37,12 @@ class _ThirdScreenState extends State<ThirdScreen> {
     'assets/music-4.mp3',
     'assets/music-5.mp3',
     'assets/music-6.mp3',
-    ];
+  ];
 
   int currentIndex = 0;
-  
-  
+
   @override
   Widget build(BuildContext context) {
-
     //=========================================================== wave color
 
     final Shader linearGradient = const LinearGradient(
@@ -43,12 +52,10 @@ class _ThirdScreenState extends State<ThirdScreen> {
       end: Alignment.centerRight,
     ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 
-
     return Scaffold(
       backgroundColor: Colors.white, // Set the main background color here
       body: Center(
-        child:
-         Column(
+        child: Column(
           children: [
             const SizedBox(height: 40),
             const Text(
@@ -61,17 +68,19 @@ class _ThirdScreenState extends State<ThirdScreen> {
             ),
             //--------------------------------------------------------------------
             ShaderMask(
-                shaderCallback: (bounds) => linearGradient,
-              child: const Text(
-                'Waves',
-                style: TextStyle(
+              shaderCallback: (bounds) => linearGradient,
+              child: Text(
+                soundTexts[currentSoundIndex],
+                style: const TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
             ),
-            const SizedBox(height: 30,),
+            const SizedBox(
+              height: 30,
+            ),
             //-----------------------------the Audio Spectrum container-----------
             Container(
               width: 270,
@@ -89,40 +98,49 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 ],
               ),
               child: const Center(
-                //child: AudioSpectrumLines(),
-              // width: 200,
-              // height: 200,),
+                child: AudioSpectrumLines(),
+                // width: 200,
+                // height: 200,),
               ),
             ),
-            const SizedBox(height: 40,),
+            const SizedBox(
+              height: 40,
+            ),
 
-            const AudioPlayerButtons(), //<------------- (The AudioPlayer Buttons ) ------
-        
-        const SizedBox(height: 45,),
-        // ignore: sized_box_for_whitespace 
-        Container(
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FourthScreen()));
+            AudioPlayerButtons(
+              onSoundIndexChanged: (index) {
+                setState(() {
+                  currentSoundIndex = index;
+                });
               },
-              style: ElevatedButton.styleFrom(
-                // ignore: deprecated_member_use
-                primary: const Color(0xff0F073E),
-                elevation: 9,
-              ),
-              child: const Text('      Next      ',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  )),
+            ), //<------------- (The AudioPlayer Buttons ) ------
+
+
+            const SizedBox(
+              height: 45,
             ),
-          ),
-          TextButton(onPressed: (){}, child: const Text('Finish Session')),
+            // ignore: sized_box_for_whitespace
+            Container(
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FourthScreen()));
+                },
+                style: ElevatedButton.styleFrom(
+                  // ignore: deprecated_member_use
+                  primary: const Color(0xff0F073E),
+                  elevation: 9,
+                ),
+                child: const Text('      Next      ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+            ),
+            TextButton(onPressed: () {}, child: const Text('Finish Session')),
           ],
         ),
       ),

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class AudioPlayerButtons extends StatefulWidget {
-  const AudioPlayerButtons({super.key});
+  final Function(int) onSoundIndexChanged;
+
+  AudioPlayerButtons({required this.onSoundIndexChanged, Key? key}) : super(key: key);
+
 
   @override
   State<AudioPlayerButtons> createState() => _AudioPlayerButtonsState();
@@ -26,7 +29,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-          color: Colors.red,
+          //color: Colors.red,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -128,13 +131,17 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
   }
 
   Future<void> playNextSound() async {
+    player.pause();
     currentIndex = (currentIndex + 1) % sounds.length;
     await playSound();
+    widget.onSoundIndexChanged(currentIndex);
   }
 
   Future<void> playPreviousSound() async {
+    player.pause();
     currentIndex = (currentIndex - 1 + sounds.length) % sounds.length;
     await playSound();
+    widget.onSoundIndexChanged(currentIndex);
   }
 
   @override
