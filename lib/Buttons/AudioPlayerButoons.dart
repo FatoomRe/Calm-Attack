@@ -1,11 +1,12 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class AudioPlayerButtons extends StatefulWidget {
   final Function(int) onSoundIndexChanged;
 
-  AudioPlayerButtons({required this.onSoundIndexChanged, Key? key})
-      : super(key: key);
+  const AudioPlayerButtons({required this.onSoundIndexChanged, super.key});
 
   @override
   State<AudioPlayerButtons> createState() => _AudioPlayerButtonsState();

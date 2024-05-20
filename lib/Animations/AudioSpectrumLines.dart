@@ -1,9 +1,10 @@
+// ignore: file_names
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 class AudioSpectrumLines extends StatefulWidget {
-  const AudioSpectrumLines({Key? key}) : super(key: key);
+  const AudioSpectrumLines({super.key});
 
   @override
   State<AudioSpectrumLines> createState() => _AudioSpectrumLinesState();
@@ -27,7 +28,7 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
   duration: Duration(milliseconds: durationMilliseconds),
 )..repeat(reverse: true);
 });
-
+ 
     animations = controllers.map((controller) {
   final beginHeight = 15.0 + random.nextDouble() * 25; 
   final endHeight = 40.0 + random.nextDouble() * 50; 
