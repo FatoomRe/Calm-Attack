@@ -123,9 +123,13 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Container(
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  // this code not doing anything i shoud find a way to stop the sound
+                  await player.stop(); 
+                  // mybe i will try to use the audioCache to stop the sound
+                  // or i will make the pause button to stop the sound
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FourthScreen()));
+                      MaterialPageRoute(builder: (context) => const FourthScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use

@@ -156,6 +156,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
     widget.onSoundIndexChanged(currentIndex);
   }
 
+  
   @override
   void dispose() {
     player.dispose();
