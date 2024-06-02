@@ -7,6 +7,11 @@ class SmellScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white, // Set the main background color here
+      appBar: AppBar(
+        title: const Text('Smell'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Center(
         child: Column(
           children: [
