@@ -1,5 +1,6 @@
 
 // modify the code to make the vibration stop when the user presses the pause button
+import 'package:calmattack/Pages/TasteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
@@ -81,7 +82,12 @@ class _VibrationScreenState extends State<VibrationScreen> {
             Container(
               height: 50,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TasteScreen()));
+                },
                 style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
                   primary: const Color(0xff0F073E),
