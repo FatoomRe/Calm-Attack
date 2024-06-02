@@ -2,18 +2,18 @@
 //import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Buttons/AudioPlayerButoons.dart';
-import 'package:calmattack/Pages/FourthScreen.dart';
+import 'package:calmattack/Pages/VibrationScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-class ThirdScreen extends StatefulWidget {
-  const ThirdScreen({super.key});
+class AudioScreen extends StatefulWidget {
+  const AudioScreen({super.key});
 
   @override
-  State<ThirdScreen> createState() => _ThirdScreenState();
+  State<AudioScreen> createState() => _AudioScreenState();
 }
 
-class _ThirdScreenState extends State<ThirdScreen> {
+class _AudioScreenState extends State<AudioScreen> {
 
   int currentSoundIndex = 0;
 
@@ -128,8 +128,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   await player.stop(); 
                   // mybe i will try to use the audioCache to stop the sound
                   // or i will make the pause button to stop the sound
+                  // ignore: use_build_context_synchronously
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const FourthScreen()));
+                      MaterialPageRoute(builder: (context) => const VibrationScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use

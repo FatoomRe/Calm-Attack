@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:calmattack/Animations/BreathingCloud.dart';
-import 'package:calmattack/Pages/ThirdScreen.dart';
+import 'package:calmattack/Pages/AudioScreen.dart';
 import 'package:flutter/material.dart';
 
 class BreathingScreen extends StatefulWidget {
@@ -164,7 +164,7 @@ class _BreathingScreenState extends State<BreathingScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ThirdScreen()));
+                        builder: (context) => const AudioScreen()));
               },
               style: ElevatedButton.styleFrom(
                 // ignore: deprecated_member_use

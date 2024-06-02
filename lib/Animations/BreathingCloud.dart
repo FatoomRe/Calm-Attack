@@ -6,7 +6,7 @@ import 'dart:async';
 class BreathingCloud extends StatefulWidget {
   final Function(String) callback;
 
-  const BreathingCloud({Key? key, required this.callback}) : super(key: key);
+  const BreathingCloud({super.key, required this.callback});
 
 
   @override

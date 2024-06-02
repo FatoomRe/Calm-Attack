@@ -3,16 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
-import 'package:flutter/services.dart';
 
-class FourthScreen extends StatefulWidget {
-  const FourthScreen({super.key});
+class VibrationScreen extends StatefulWidget {
+  const VibrationScreen({super.key});
 
   @override
-  _FourthScreenState createState() => _FourthScreenState();
+  _VibrationScreenState createState() => _VibrationScreenState();
 }
 
-class _FourthScreenState extends State<FourthScreen> {
+class _VibrationScreenState extends State<VibrationScreen> {
   bool _vibrating = false;
 
   @override
@@ -43,7 +42,7 @@ class _FourthScreenState extends State<FourthScreen> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 40),
+            const SizedBox(height: 50),
             const Text(
               'Focus on',
               style: TextStyle(
@@ -60,7 +59,7 @@ class _FourthScreenState extends State<FourthScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 50),
             //--------------------------------------------------------------
             Container(
               width: 300,
@@ -69,7 +68,7 @@ class _FourthScreenState extends State<FourthScreen> {
                 'assets/vibrationAni.riv',
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 35),
             //-------------------------------------------------------ICON button-------
             IconButton(
               onPressed: _vibrating ? stopVibration : startVibration,
@@ -94,7 +93,7 @@ class _FourthScreenState extends State<FourthScreen> {
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     )),
-              ),
+              ), 
             ),
             TextButton(onPressed: () {}, child: const Text('Finish Session')),
           ],
