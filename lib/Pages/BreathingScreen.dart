@@ -153,32 +153,33 @@ class _BreathingScreenState extends State<BreathingScreen> {
         ),
         const SizedBox(height: 160),
         BreathingCloud(callback: _updateBreathingText), //--> animation image
-        const SizedBox(height: 160),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          // ignore: sized_box_for_whitespace
-          child: Container(
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AudioScreen()));
-              },
-              style: ElevatedButton.styleFrom(
-                // ignore: deprecated_member_use
-                primary: const Color(0xff0F073E),
+        const SizedBox(height: 170),
+        Column(
+          children: [
+            Container(
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AudioScreen()));
+                },
+                style: ElevatedButton.styleFrom(
+                  // ignore: deprecated_member_use
+                  primary: const Color(0xff0F073E),
+                ),
+                child: const Text('      Next      ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    )),
               ),
-              child: const Text('      Next      ',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  )),
             ),
-          ),
+          ],
         ),
+        TextButton(onPressed: () {}, child: const Text('Finish Session')),
       ],
     ));
   }
