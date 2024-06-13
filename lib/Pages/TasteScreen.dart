@@ -14,32 +14,32 @@ class TasteScreen extends StatelessWidget {
           Positioned(
             top: -5,
             right: -29,
-            child: Image.asset('assets/doughnut.png', width: 190, height: 190),
+            child: Image.asset('assets/Taste/doughnut.png', width: 190, height: 190),
           ),
           Positioned(
             top: 85,
             left: -16,
-            child: Image.asset('assets/pancake.png', width: 180, height: 180),
+            child: Image.asset('assets/Taste/pancake.png', width: 180, height: 180),
           ),
           Positioned(
             top: 200,
             right: -40,
-            child: Image.asset('assets/cupcake.png', width: 200, height: 200),
+            child: Image.asset('assets/Taste/cupcake.png', width: 200, height: 200),
           ),
           Positioned(
             bottom: 165,
             left: -33,
-            child: Image.asset('assets/milkshake.png', width: 190, height: 190),
+            child: Image.asset('assets/Taste/milkshake.png', width: 190, height: 190),
           ),
           Positioned(
             bottom: 70,
             right: -56,
-            child: Image.asset('assets/icecream.png', width: 225, height: 225),
+            child: Image.asset('assets/Taste/icecream.png', width: 225, height: 225),
           ),
           Positioned(
             bottom: 0,
             left: -24,
-            child: Image.asset('assets/pineapple.png', width: 200, height: 200),
+            child: Image.asset('assets/Taste/pineapple.png', width: 200, height: 200),
           ),
 
           Column(

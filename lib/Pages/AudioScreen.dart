@@ -32,12 +32,12 @@ class _AudioScreenState extends State<AudioScreen> {
   AudioPlayer audioCache = AudioPlayer();
 
   List<String> sounds = [
-    'assets/music-1.mp3',
-    'assets/music-2.mp3',
-    'assets/music-3.mp3',
-    'assets/music-4.mp3',
-    'assets/music-5.mp3',
-    'assets/music-6.mp3',
+    'assets/Sounds/music-1.mp3',
+    'assets/Sounds/music-2.mp3',
+    'assets/Sounds/music-3.mp3',
+    'assets/Sounds/music-4.mp3',
+    'assets/Sounds/music-5.mp3',
+    'assets/Sounds/music-6.mp3',
   ];
 
   int currentIndex = 0;

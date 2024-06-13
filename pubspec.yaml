@@ -69,19 +69,19 @@ flutter:
     - assets/INHALE.png
     - assets/HOLD.png
     - assets/EXHALE.png
-    - assets/music-1.mp3
-    - assets/music-2.mp3
-    - assets/music-3.mp3
-    - assets/music-4.mp3
-    - assets/music-5.mp3
-    - assets/music-6.mp3
+    - assets/Sounds/music-1.mp3
+    - assets/Sounds/music-2.mp3
+    - assets/Sounds/music-3.mp3
+    - assets/Sounds/music-4.mp3
+    - assets/Sounds/music-5.mp3
+    - assets/Sounds/music-6.mp3
     - assets/vibrationAni.riv
-    - assets/doughnut.png
-    - assets/cupcake.png
-    - assets/icecream.png
-    - assets/milkshake.png
-    - assets/pancake.png
-    - assets/pineapple.png
+    - assets/Taste/doughnut.png
+    - assets/Taste/cupcake.png
+    - assets/Taste//icecream.png
+    - assets/Taste/milkshake.png
+    - assets/Taste/pancake.png
+    - assets/Taste/pineapple.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
