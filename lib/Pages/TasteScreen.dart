@@ -1,3 +1,5 @@
+import 'package:calmattack/Pages/FinishScreen.dart';
+import 'package:calmattack/Pages/SmellScreen.dart';
 import 'package:flutter/material.dart';
 
 class TasteScreen extends StatelessWidget {
@@ -77,7 +79,12 @@ class TasteScreen extends StatelessWidget {
                   Container(
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SmellScreen()));
+                },
                       style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
                   primary: const Color(0xff0F073E),
@@ -92,7 +99,12 @@ class TasteScreen extends StatelessWidget {
               ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FinishScreen()));
+                },
                     child: const Text('Finish Session'),
                   ),
                 ],

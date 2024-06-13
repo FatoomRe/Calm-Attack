@@ -2,6 +2,7 @@
 //import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Animations/AudioSpectrumLines.dart';
 import 'package:calmattack/Buttons/AudioPlayerButoons.dart';
+import 'package:calmattack/Pages/FinishScreen.dart';
 import 'package:calmattack/Pages/VibrationScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -145,7 +146,14 @@ class _AudioScreenState extends State<AudioScreen> {
                     )),
               ),
             ),
-            TextButton(onPressed: () {}, child: const Text('Finish Session')),
+            TextButton(
+              onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const FinishScreen()));
+          },
+             child: const Text('Finish Session')),
           ],
         ),
       ),

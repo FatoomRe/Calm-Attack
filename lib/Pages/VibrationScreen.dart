@@ -1,5 +1,6 @@
 
 // modify the code to make the vibration stop when the user presses the pause button
+import 'package:calmattack/Pages/FinishScreen.dart';
 import 'package:calmattack/Pages/TasteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
@@ -102,7 +103,14 @@ class _VibrationScreenState extends State<VibrationScreen> {
                     )),
               ), 
             ),
-            TextButton(onPressed: () {}, child: const Text('Finish Session')),
+            TextButton(
+              onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const FinishScreen()));
+          },
+               child: const Text('Finish Session')),
           ],
         ),
       ),

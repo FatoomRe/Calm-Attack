@@ -2,6 +2,7 @@
 
 import 'package:calmattack/Animations/BreathingCloud.dart';
 import 'package:calmattack/Pages/AudioScreen.dart';
+import 'package:calmattack/Pages/FinishScreen.dart';
 import 'package:flutter/material.dart';
 
 class BreathingScreen extends StatefulWidget {
@@ -179,7 +180,14 @@ class _BreathingScreenState extends State<BreathingScreen> {
             ),
           ],
         ),
-        TextButton(onPressed: () {}, child: const Text('Finish Session')),
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const FinishScreen()));
+          },
+           child: const Text('Finish Session')),
       ],
     ));
   }
