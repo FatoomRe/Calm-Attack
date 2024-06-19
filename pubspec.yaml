@@ -82,6 +82,14 @@ flutter:
     - assets/Taste/milkshake.png
     - assets/Taste/pancake.png
     - assets/Taste/pineapple.png
+    - assets/Smell/F1.png
+    - assets/Smell/F2.png
+    - assets/Smell/F3.png
+    - assets/Smell/F4.png
+    - assets/Smell/F5.png
+    - assets/Smell/F6.png
+    - assets/Smell/F7.png
+    - assets/Smell/F8.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
