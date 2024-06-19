@@ -47,7 +47,7 @@ class StartScreen extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xff0F073E),
+                backgroundColor: const Color(0xff0F073E),
               ),
               child: const Text(
                 'Get Started',

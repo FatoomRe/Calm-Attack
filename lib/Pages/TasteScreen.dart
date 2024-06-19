@@ -34,7 +34,7 @@ class TasteScreen extends StatelessWidget {
           Positioned(
             bottom: 70,
             right: -56,
-            child: Image.asset('assets/Taste/icecream.png', width: 225, height: 225),
+            child: Image.asset('assets/Taste/IceCream.png', width: 225, height: 225),
           ),
           Positioned(
             bottom: 0,
@@ -87,7 +87,7 @@ class TasteScreen extends StatelessWidget {
                 },
                       style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
-                  primary: const Color(0xff0F073E),
+                  backgroundColor: const Color(0xff0F073E),
                   elevation: 9,
                 ),
                 child: const Text('      Next      ',

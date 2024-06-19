@@ -168,7 +168,7 @@ class _BreathingScreenState extends State<BreathingScreen> {
                 },
                 style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
-                  primary: const Color(0xff0F073E),
+                  backgroundColor: const Color(0xff0F073E),
                 ),
                 child: const Text('      Next      ',
                     style: TextStyle(
