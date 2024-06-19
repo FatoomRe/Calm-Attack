@@ -10,37 +10,12 @@ class TasteScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          //background images
-          Positioned(
-            top: -5,
-            right: -29,
-            child: Image.asset('assets/Taste/doughnut.png', width: 190, height: 190),
-          ),
-          Positioned(
-            top: 85,
-            left: -16,
-            child: Image.asset('assets/Taste/pancake.png', width: 180, height: 180),
-          ),
-          Positioned(
-            top: 200,
-            right: -40,
-            child: Image.asset('assets/Taste/cupcake.png', width: 200, height: 200),
-          ),
-          Positioned(
-            bottom: 165,
-            left: -33,
-            child: Image.asset('assets/Taste/milkshake.png', width: 190, height: 190),
-          ),
-          Positioned(
-            bottom: 70,
-            right: -56,
-            child: Image.asset('assets/Taste/IceCream.png', width: 225, height: 225),
-          ),
-          Positioned(
-            bottom: 0,
-            left: -24,
-            child: Image.asset('assets/Taste/pineapple.png', width: 200, height: 200),
-          ),
+          Positioned(top: -5, right: -29, child: Image.asset('assets/Taste/doughnut.png', width: 190, height: 190),),
+          Positioned(top: 85,left: -16,child: Image.asset('assets/Taste/pancake.png', width: 180, height: 180),),
+          Positioned(top: 200,right: -40,child: Image.asset('assets/Taste/cupcake.png', width: 200, height: 200),),
+          Positioned(bottom: 165,left: -33,child: Image.asset('assets/Taste/milkshake.png', width: 190, height: 190),),
+          Positioned(bottom: 70,right: -56,child: Image.asset('assets/Taste/IceCream.png', width: 225, height: 225),),
+          Positioned(bottom: 0,left: -24,child: Image.asset('assets/Taste/pineapple.png', width: 200, height: 200),),
 
           Column(
             children: [
@@ -73,7 +48,6 @@ class TasteScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(flex: 5),//to push buttons to the bottom
-
               Column(
                 children: [
                   Container(
