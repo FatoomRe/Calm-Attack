@@ -50,7 +50,12 @@ class SmellScreen extends StatelessWidget {
                   Container(
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () { },
+                      onPressed: () {
+                        Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FinishScreen()));
+                      },
                       style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
                   backgroundColor: const Color(0xff0F073E),
