@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SmellScreen extends StatelessWidget {
-  const SmellScreen({Key? key}) : super(key: key);
+  const SmellScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,27 +12,27 @@ class SmellScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           children: [
-            const SizedBox(height: 40),
-            const Text(
+            SizedBox(height: 40),
+            Text(
               'Focus on',
               style: TextStyle(
                 color: Color(0xff0F073E),
                 fontSize: 35,
               ),
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20),
+            Text(
               'Smell',
               style: TextStyle(
                 color: Color(0xff0F073E),
                 fontSize: 35,
               ),
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20),
+            Text(
               'Coming Soon',
               style: TextStyle(
                 color: Color(0xff0F073E),

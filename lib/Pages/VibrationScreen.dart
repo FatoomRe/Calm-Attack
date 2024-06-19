@@ -1,3 +1,4 @@
+// ignore: file_names
 
 // modify the code to make the vibration stop when the user presses the pause button
 import 'package:calmattack/Pages/FinishScreen.dart';

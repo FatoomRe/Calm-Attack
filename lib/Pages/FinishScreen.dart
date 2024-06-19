@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatelessWidget {
-  const FinishScreen({Key? key}) : super(key: key);
+  const FinishScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,27 +12,27 @@ class FinishScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           children: [
-            const SizedBox(height: 40),
-            const Text(
+            SizedBox(height: 40),
+            Text(
               'Congratulations!',
               style: TextStyle(
                 color: Color(0xff0F073E),
                 fontSize: 35,
               ),
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20),
+            Text(
               'You have completed the journey',
               style: TextStyle(
                 color: Color(0xff0F073E),
                 fontSize: 20,
               ),
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20),
+            Text(
               'Thank you for participating',
               style: TextStyle(
                 color: Color(0xff0F073E),
