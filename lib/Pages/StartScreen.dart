@@ -15,7 +15,7 @@ class StartScreen extends StatelessWidget {
           const SizedBox(height: 100),
           const Text(
             textAlign: TextAlign.center,
-            'Are you having a panic attack?',
+            'Are you having a Panic Attack?',
             style: TextStyle(
               color: Colors.white,
               fontSize: 43,
