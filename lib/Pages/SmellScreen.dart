@@ -83,7 +83,7 @@ class SmellScreen extends StatelessWidget {
               // Spacer to add some padding at the bottom
               const Spacer(),
             ],
-          )
+          ),
         ],
       ),
     );
