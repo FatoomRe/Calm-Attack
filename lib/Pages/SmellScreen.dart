@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SmellScreen extends StatelessWidget {
   const SmellScreen({super.key});
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
@@ -16,7 +16,7 @@ class SmellScreen extends StatelessWidget {
           Positioned(bottom:35, right: -84, child: Image.asset('assets/Smell/F6.png', width: 300, height:300)),
           Positioned(bottom: -15, left: -25, child: Image.asset('assets/Smell/F7.png', width: 130, height: 130)),
           Positioned(bottom: -7, right: -24, child: Image.asset('assets/Smell/F8.png', width: 140, height: 140)),
-          Column(
+          Column( 
             children: [
               const Spacer(flex: 7),
                 Center(

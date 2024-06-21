@@ -6,40 +6,85 @@ class FinishScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set the main background color here
-      appBar: AppBar(
-        title: const Text('Finish'),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: const Center(
-        child: Column(
-          children: [
-            SizedBox(height: 40),
-            Text(
-              'Congratulations!',
-              style: TextStyle(
-                color: Color(0xff0F073E),
-                fontSize: 35,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'Congratulation!',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff052D94),
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'You have completed the journey',
-              style: TextStyle(
-                color: Color(0xff0F073E),
-                fontSize: 20,
+              const SizedBox(height: 10),
+              const Text(
+                'You survived your panic attack, you are\nin control of your mind and body.',
+                style: TextStyle(
+                    fontSize: 19,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
               ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Thank you for participating',
-              style: TextStyle(
-                color: Color(0xff0F073E),
-                fontSize: 20,
+              const SizedBox(height: 25),
+              Image.asset(
+                'assets/cong.png',
+                width: 300,
+                height: 300,
               ),
-            ),
-          ],
+              const SizedBox(height: 20),
+              const Text(
+                'Total Spent Time',
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const Text(
+                '1 Minute',
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff052D94),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 25),
+              Column(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 215,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FinishScreen()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        // ignore: deprecated_member_use
+                        backgroundColor: const Color(0xff052D94),
+                        elevation: 9,
+                      ),
+                      child: const Text(' Back to Home',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
