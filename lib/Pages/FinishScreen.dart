@@ -1,3 +1,4 @@
+import 'package:calmattack/Pages/StartScreen.dart';
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatelessWidget {
@@ -66,7 +67,7 @@ class FinishScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const FinishScreen()));
+                                builder: (context) => const StartScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         // ignore: deprecated_member_use
