@@ -15,7 +15,6 @@ class AudioScreen extends StatefulWidget {
 }
 
 class _AudioScreenState extends State<AudioScreen> {
-
   int currentSoundIndex = 0;
 
   List<String> soundTexts = [
@@ -116,7 +115,6 @@ class _AudioScreenState extends State<AudioScreen> {
               },
             ), //<------------- (The AudioPlayer Buttons ) ------
 
-
             const SizedBox(
               height: 45,
             ),
@@ -126,12 +124,14 @@ class _AudioScreenState extends State<AudioScreen> {
               child: ElevatedButton(
                 onPressed: () async {
                   // this code not doing anything i shoud find a way to stop the sound
-                  await player.stop(); 
+                  await player.stop();
                   // mybe i will try to use the audioCache to stop the sound
                   // or i will make the pause button to stop the sound
                   // ignore: use_build_context_synchronously
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const VibrationScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const VibrationScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
@@ -147,13 +147,13 @@ class _AudioScreenState extends State<AudioScreen> {
               ),
             ),
             TextButton(
-              onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const FinishScreen()));
-          },
-             child: const Text('Finish Session')),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FinishScreen()));
+                },
+                child: const Text('Finish Session')),
           ],
         ),
       ),

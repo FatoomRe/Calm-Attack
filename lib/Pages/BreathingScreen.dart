@@ -1,5 +1,4 @@
-// ignore_for_file: file_names
-
+// ignore: file_names
 import 'package:calmattack/Animations/BreathingCloud.dart';
 import 'package:calmattack/Pages/AudioScreen.dart';
 import 'package:calmattack/Pages/FinishScreen.dart';
@@ -13,7 +12,7 @@ class BreathingScreen extends StatefulWidget {
 }
 
 class _BreathingScreenState extends State<BreathingScreen> {
-  String _breathingText = 'INHALE'; 
+  String _breathingText = 'INHALE';
 
   void _updateBreathingText(String text) {
     setState(() {
@@ -22,130 +21,14 @@ class _BreathingScreenState extends State<BreathingScreen> {
   }
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
       children: [
         const SizedBox(height: 30),
-        IntrinsicHeight(
-          child: Container(
-            padding: const EdgeInsets.all(30),
-            child: Row(
-              children: [
-                Expanded(
-                  // ignore: sized_box_for_whitespace
-                  child: Container(
-                    //color: Colors.red,
-                    height: 100,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '3',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Seconds',
-                          style: TextStyle(
-                            fontSize: 10,
-                          ),
-                        ),
-                        Text(
-                          'INHALE',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const VerticalDivider(
-                  color: Colors.black,
-                  thickness: 2.5,
-                  indent: 26,
-                  endIndent: 15,
-                ),
-                Expanded(
-                  // ignore: sized_box_for_whitespace
-                  child: Container(
-                    //color: Colors.green,
-                    height: 100,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '3',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Seconds',
-                          style: TextStyle(
-                            fontSize: 10,
-                          ),
-                        ),
-                        Text(
-                          'HOLD',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const VerticalDivider(
-                  color: Colors.black,
-                  thickness: 2.5,
-                  indent: 26,
-                  endIndent: 15,
-                ),
-                Expanded(
-                  // ignore: sized_box_for_whitespace
-                  child: Container(
-                    //color: Colors.blue,
-                    height: 100,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '3',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Seconds',
-                          style: TextStyle(
-                            fontSize: 10,
-                          ),
-                        ),
-                        Text(
-                          'EXHALE',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        const BreathingPhases(),
         const SizedBox(height: 10),
-         Text(
+        Text(
           _breathingText,
           style: const TextStyle(
             fontSize: 26,
@@ -153,42 +36,143 @@ class _BreathingScreenState extends State<BreathingScreen> {
           ),
         ),
         const SizedBox(height: 160),
-        BreathingCloud(callback: _updateBreathingText), //--> animation image
+        BreathingCloud(callback: _updateBreathingText),
         const SizedBox(height: 170),
-        Column(
+        const NavigationButtons(),
+      ],
+    ));
+  }
+}
+
+class BreathingPhases extends StatelessWidget {
+  const BreathingPhases({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicHeight(
+      child: Container(
+        padding: const EdgeInsets.all(30),
+        child: const Row(
           children: [
-            Container(
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AudioScreen()));
-                },
-                style: ElevatedButton.styleFrom(
-                  // ignore: deprecated_member_use
-                  backgroundColor: const Color(0xff0F073E),
-                ),
-                child: const Text('      Next      ',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    )),
+            Expanded(
+              child: BreathingPhaseWidget(
+                duration: '3',
+                phase: 'INHALE',
+              ),
+            ),
+            VerticalDivider(
+              color: Colors.black,
+              thickness: 2.5,
+              indent: 26,
+              endIndent: 15,
+            ),
+            Expanded(
+              child: BreathingPhaseWidget(
+                duration: '3',
+                phase: 'HOLD',
+              ),
+            ),
+            VerticalDivider(
+              color: Colors.black,
+              thickness: 2.5,
+              indent: 26,
+              endIndent: 15,
+            ),
+            Expanded(
+              child: BreathingPhaseWidget(
+                duration: '3',
+                phase: 'EXHALE',
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class BreathingPhaseWidget extends StatelessWidget {
+  final String duration;
+  final String phase;
+
+  const BreathingPhaseWidget({
+    super.key,
+    required this.duration,
+    required this.phase,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            duration,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'Seconds',
+            style: TextStyle(
+              fontSize: 10,
+            ),
+          ),
+          Text(
+            phase,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NavigationButtons extends StatelessWidget {
+  const NavigationButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AudioScreen()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xff0F073E),
+            ),
+            child: const Text(
+              '      Next      ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
         TextButton(
           onPressed: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const FinishScreen()));
+              context,
+              MaterialPageRoute(builder: (context) => const FinishScreen()),
+            );
           },
-           child: const Text('Finish Session')),
+          child: const Text('Finish Session'),
+        ),
       ],
-    ));
+    );
   }
 }
