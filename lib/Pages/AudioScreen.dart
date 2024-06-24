@@ -31,12 +31,12 @@ class _AudioScreenState extends State<AudioScreen> {
   AudioPlayer audioCache = AudioPlayer();
 
   List<String> sounds = [
-    'assets/Sounds/music-1.mp3',
-    'assets/Sounds/music-2.mp3',
-    'assets/Sounds/music-3.mp3',
-    'assets/Sounds/music-4.mp3',
-    'assets/Sounds/music-5.mp3',
-    'assets/Sounds/music-6.mp3',
+    'assets/music-1.mp3',
+    'assets/music-2.mp3',
+    'assets/music-3.mp3',
+    'assets/music-4.mp3',
+    'assets/music-5.mp3',
+    'assets/music-6.mp3',
   ];
 
   int currentIndex = 0;
@@ -53,7 +53,7 @@ class _AudioScreenState extends State<AudioScreen> {
     ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 
     return Scaffold(
-      backgroundColor: Colors.white, // Set the main background color here
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           children: [

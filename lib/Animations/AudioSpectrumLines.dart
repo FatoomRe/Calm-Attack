@@ -30,8 +30,8 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
 });
  
     animations = controllers.map((controller) {
-  final beginHeight = 15.0 + random.nextDouble() * 25; 
-  final endHeight = 40.0 + random.nextDouble() * 50; 
+  final beginHeight = 15.0 + random.nextDouble() * 25;
+  final endHeight = 40.0 + random.nextDouble() * 50;
   return Tween<double>(begin: beginHeight, end: endHeight).animate(
     CurvedAnimation(parent: controller, curve: Curves.easeInOut),
   );

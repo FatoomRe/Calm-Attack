@@ -128,19 +128,27 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
   }
 
   Future<void> playSound() async {
+  try {
     final sound = sounds[currentIndex];
     await player.play(AssetSource(sound));
     setState(() {
       isPlaying = true;
     });
+  } catch (e) {
+    print("Error playing sound: $e");
   }
+}
 
-  Future<void> pauseSound() async {
+Future<void> pauseSound() async {
+  try {
     await player.pause();
     setState(() {
       isPlaying = false;
     });
+  } catch (e) {
+    print("Error pausing sound: $e");
   }
+}
 
   Future<void> playNextSound() async {
     player.pause();
@@ -156,8 +164,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
     widget.onSoundIndexChanged(currentIndex);
   }
 
-  
-  @override
+
   void dispose() {
     player.dispose();
     super.dispose();
