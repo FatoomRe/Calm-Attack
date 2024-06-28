@@ -82,8 +82,4 @@ For any questions or suggestions, feel free to reach out:
 - **GitHub**: [FatoomRe](https://github.com/FatoomRe)
 - **Email**: [your-email@example.com](mailto:your-email@example.com)
 
-Thank you for using Calm Attack! We hope it helps you find peace and calm during difficult moments.
-
----
-
-*This README file was generated with ❤️ by GPT-4o.*
+Thank you for using Calm Attack! I hope it helps you find peace and calm during difficult moments.
