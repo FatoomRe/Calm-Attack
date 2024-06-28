@@ -12,11 +12,11 @@ Welcome to **Calm Attack**, an open-source Flutter-based mobile application desi
 
 ## Features
 
-- **Breathing Exercises**: Guided breathing exercises to help regulate breathing and reduce anxiety.
-- **Grounding Techniques**: Techniques to help users regain a sense of control by focusing on the present moment.
-- **Visualization Exercises**: Calming visualizations to help distract from panic-inducing thoughts.
-- **Customizable Reminders**: Set reminders to practice exercises regularly.
-- **Progress Tracking**: Monitor your progress and see how the exercises are helping over time.
+- **Breathing Exercise**: Guided breathing exercises to help regulate breathing and reduce anxiety.
+- **Sound Focus Exercise**: This exercise encourages users to focus on specific sounds to ground themselves in the present moment.
+- **Vibration Focus Exercise**: Exercise that uses vibrations to help users become more aware of their physical sensations and stay grounded.
+- **Smell Imagination Exercise**:  This exercise guides users to imagine calming scents to help them relax and reduce stress.
+- **Test Imagination Exercise**: Exercise that challenges users to imagine and visualize specific scenarios or images to distract from panic-inducing thoughts.
 
 ## Installation
 
