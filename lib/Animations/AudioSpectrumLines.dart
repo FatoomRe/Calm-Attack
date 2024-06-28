@@ -22,13 +22,13 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
     super.initState();
 
     controllers = List.generate(count, (index) {
-  final durationMilliseconds = 20 + random.nextInt(700); 
+  final durationMilliseconds = 20 + random.nextInt(700);
   return AnimationController(
   vsync: this,
   duration: Duration(milliseconds: durationMilliseconds),
 )..repeat(reverse: true);
 });
- 
+
     animations = controllers.map((controller) {
   final beginHeight = 15.0 + random.nextDouble() * 25;
   final endHeight = 40.0 + random.nextDouble() * 50;
