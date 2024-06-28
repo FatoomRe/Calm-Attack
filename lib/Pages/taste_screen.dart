@@ -1,5 +1,5 @@
-import 'package:calmattack/Pages/FinishScreen.dart';
-import 'package:calmattack/Pages/SmellScreen.dart';
+import 'package:calmattack/Pages/finish_screen.dart';
+import 'package:calmattack/Pages/smell_screen.dart';
 import 'package:flutter/material.dart';
 
 class TasteScreen extends StatelessWidget {

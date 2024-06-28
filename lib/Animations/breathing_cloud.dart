@@ -1,5 +1,3 @@
-// ignore: file_names
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -8,19 +6,17 @@ class BreathingCloud extends StatefulWidget {
 
   const BreathingCloud({super.key, required this.callback});
 
-
   @override
-  
+
   // ignore: library_private_types_in_public_api
   _BreathingCloudState createState() => _BreathingCloudState();
 }
 
 class _BreathingCloudState extends State<BreathingCloud>
- with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
   String _imagePath = 'assets/INHALE.png';
-  
 
   @override
   void initState() {
@@ -38,8 +34,7 @@ class _BreathingCloudState extends State<BreathingCloud>
       ),
     );
 
-
-     _controller.addStatusListener((status) {
+    _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         setState(() {
           _imagePath = 'assets/HOLD.png';
@@ -87,4 +82,3 @@ class _BreathingCloudState extends State<BreathingCloud>
     super.dispose();
   }
 }
-

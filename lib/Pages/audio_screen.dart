@@ -1,9 +1,7 @@
-// ignore_for_file: file_names
-//import 'package:calmattack/Animations/AudioSpectrumLines.dart';
-import 'package:calmattack/Animations/AudioSpectrumLines.dart';
-import 'package:calmattack/Buttons/AudioPlayerButoons.dart';
-import 'package:calmattack/Pages/FinishScreen.dart';
-import 'package:calmattack/Pages/VibrationScreen.dart';
+import 'package:calmattack/Animations/audio_spectrum_lines.dart';
+import 'package:calmattack/Buttons/audio_player_butoons.dart';
+import 'package:calmattack/Pages/finish_screen.dart';
+import 'package:calmattack/Pages/vibration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 

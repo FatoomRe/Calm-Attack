@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:calmattack/Pages/StartScreen.dart';
+import 'package:calmattack/Pages/start_screen.dart';
 
 void main() {
   runApp(MaterialApp(

@@ -1,6 +1,5 @@
-// ignore_for_file: file_names, deprecated_member_use
 
-import 'package:calmattack/Pages/BreathingScreen.dart';
+import 'package:calmattack/Pages/breathing_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 

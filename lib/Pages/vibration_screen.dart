@@ -1,8 +1,5 @@
-// ignore: file_names
-
-// modify the code to make the vibration stop when the user presses the pause button
-import 'package:calmattack/Pages/FinishScreen.dart';
-import 'package:calmattack/Pages/TasteScreen.dart';
+import 'package:calmattack/Pages/finish_screen.dart';
+import 'package:calmattack/Pages/taste_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
@@ -65,10 +62,10 @@ class _VibrationScreenState extends State<VibrationScreen> {
             ),
             const SizedBox(height: 50),
             //--------------------------------------------------------------
-            Container(
+            const SizedBox(
               width: 300,
               height: 300,
-              child: const RiveAnimation.asset(
+              child: RiveAnimation.asset(
                 'assets/vibrationAni.riv',
               ),
             ),
@@ -82,14 +79,14 @@ class _VibrationScreenState extends State<VibrationScreen> {
                       size: 50, color: Colors.red),
             ),
             //--------------------------------------------------------------
-            Container(
+            SizedBox(
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const TasteScreen()));
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TasteScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   // ignore: deprecated_member_use
@@ -102,16 +99,16 @@ class _VibrationScreenState extends State<VibrationScreen> {
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     )),
-              ), 
+              ),
             ),
             TextButton(
-              onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const FinishScreen()));
-          },
-               child: const Text('Finish Session')),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FinishScreen()));
+                },
+                child: const Text('Finish Session')),
           ],
         ),
       ),

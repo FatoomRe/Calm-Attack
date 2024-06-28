@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -165,6 +163,7 @@ Future<void> pauseSound() async {
   }
 
 
+  @override
   void dispose() {
     player.dispose();
     super.dispose();

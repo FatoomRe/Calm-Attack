@@ -1,7 +1,6 @@
-// ignore: file_names
-import 'package:calmattack/Animations/BreathingCloud.dart';
-import 'package:calmattack/Pages/AudioScreen.dart';
-import 'package:calmattack/Pages/FinishScreen.dart';
+import 'package:calmattack/Animations/breathing_cloud.dart';
+import 'package:calmattack/Pages/audio_screen.dart';
+import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 
 class BreathingScreen extends StatefulWidget {
@@ -141,6 +140,7 @@ class NavigationButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // ignore: sized_box_for_whitespace
         Container(
           height: 50,
           child: ElevatedButton(

@@ -1,4 +1,4 @@
-import 'package:calmattack/Pages/FinishScreen.dart';
+import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 
 class SmellScreen extends StatelessWidget {
@@ -47,6 +47,7 @@ class SmellScreen extends StatelessWidget {
               const Spacer(flex: 5),
               Column(
                 children: [
+                  // ignore: sized_box_for_whitespace
                   Container(
                     height: 50,
                     child: ElevatedButton(

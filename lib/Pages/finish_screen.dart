@@ -1,4 +1,4 @@
-import 'package:calmattack/Pages/StartScreen.dart';
+import 'package:calmattack/Pages/start_screen.dart';
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatelessWidget {
@@ -59,6 +59,7 @@ class FinishScreen extends StatelessWidget {
               const SizedBox(height: 25),
               Column(
                 children: [
+                  // ignore: sized_box_for_whitespace
                   Container(
                     height: 50,
                     width: 215,
