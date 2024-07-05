@@ -7,7 +7,6 @@ Welcome to **Calm Attack**, an open-source Flutter-based mobile application desi
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Features
@@ -70,9 +69,6 @@ We welcome contributions from the community! If you have an idea for an enhancem
     ```
 5. **Create a new Pull Request**
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
