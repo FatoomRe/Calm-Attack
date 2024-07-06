@@ -78,4 +78,9 @@ For any questions or suggestions, feel free to reach out:
 - **GitHub**: [FatoomRe](https://github.com/FatoomRe)
 - **Email**: [FatimahAlabbas1@outlook.sa](mailto:FatimahAlabbas1@outlook.sa)
 
+
+## License
+
+[This project is licensed under the GNU General Public License.](LICENSE.txt)
+
 Thank you for using Calm Attack! I hope it helps you find peace and calm during difficult moments.
