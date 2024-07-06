@@ -8,6 +8,7 @@ Welcome to **Calm Attack**, an open-source Flutter-based mobile application desi
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Contact](#contact)
+- [License](#license)
 
 ## Features
 
