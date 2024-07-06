@@ -47,8 +47,6 @@ Welcome to **Calm Attack**, an open-source Flutter-based mobile application desi
 1. Open the app on your device.
 2. Navigate through the different exercises available.
 3. Follow the guided instructions for each exercise.
-4. Set reminders to practice regularly.
-5. Track your progress over time to see improvements.
 
 ## Contributing
 
