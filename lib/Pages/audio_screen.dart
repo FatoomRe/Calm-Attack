@@ -123,7 +123,7 @@ class _AudioScreenState extends State<AudioScreen> {
                 onPressed: () async {
                   // this code not doing anything i shoud find a way to stop the sound
                   await player.stop();
-                  // mybe i will try to use the audioCache to stop the sound
+                  // maybe i will try to use the audioCache to stop the sound
                   // or i will make the pause button to stop the sound
                   // ignore: use_build_context_synchronously
                   Navigator.push(
