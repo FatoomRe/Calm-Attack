@@ -6,6 +6,8 @@ class FinishScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Center(
         child: Padding(
@@ -15,7 +17,7 @@ class FinishScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                'Congratulation!',
+                'Congratulations!',
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
@@ -27,24 +29,27 @@ class FinishScreen extends StatelessWidget {
               const Text(
                 'You survived your panic attack, you are\nin control of your mind and body.',
                 style: TextStyle(
-                    fontSize: 19,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 19,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 25),
               Image.asset(
                 'assets/cong.png',
-                width: 300,
-                height: 300,
+                width: screenSize.width * 0.75,
+                height: screenSize.width * 0.75, // Maintain square aspect ratio
+                fit: BoxFit.contain,
               ),
               const SizedBox(height: 20),
               const Text(
                 'Total Spent Time',
                 style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const Text(
@@ -57,33 +62,31 @@ class FinishScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 25),
-              Column(
-                children: [
-                  // ignore: sized_box_for_whitespace
-                  Container(
-                    height: 50,
-                    width: 215,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const StartScreen()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        // ignore: deprecated_member_use
-                        backgroundColor: const Color(0xff052D94),
-                        elevation: 9,
+              Container(
+                height: 50,
+                width: screenSize.width * 0.55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const StartScreen(),
                       ),
-                      child: const Text(' Back to Home',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          )),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff052D94),
+                    elevation: 9,
+                  ),
+                  child: const Text(
+                    'Back to Home',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
+                ),
               ),
             ],
           ),
