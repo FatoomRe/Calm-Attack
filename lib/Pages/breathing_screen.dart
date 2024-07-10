@@ -21,25 +21,30 @@ class _BreathingScreenState extends State<BreathingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-        body: Column(
-      children: [
-        const SizedBox(height: 30),
-        const BreathingPhases(),
-        const SizedBox(height: 10),
-        Text(
-          _breathingText,
-          style: const TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            const BreathingPhases(),
+            const SizedBox(height: 10),
+            Text(
+              _breathingText,
+              style: const TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: screenSize.height * 0.2),
+            BreathingCloud(callback: _updateBreathingText),
+            SizedBox(height: screenSize.height * 0.3),
+            const NavigationButtons(),
+          ],
         ),
-        const SizedBox(height: 160),
-        BreathingCloud(callback: _updateBreathingText),
-        const SizedBox(height: 170),
-        const NavigationButtons(),
-      ],
-    ));
+      ),
+    );
   }
 }
 
@@ -50,7 +55,7 @@ class BreathingPhases extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        padding: const EdgeInsets.all(30),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.08), // Responsive padding
         child: const Row(
           children: [
             Expanded(
@@ -102,33 +107,30 @@ class BreathingPhaseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            duration,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          duration,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-          const Text(
-            'Seconds',
-            style: TextStyle(
-              fontSize: 10,
-            ),
+        ),
+        const Text(
+          'Seconds',
+          style: TextStyle(
+            fontSize: 10,
           ),
-          Text(
-            phase,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
+        ),
+        Text(
+          phase,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -140,9 +142,9 @@ class NavigationButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ignore: sized_box_for_whitespace
         Container(
           height: 50,
+          width: MediaQuery.of(context).size.width * 0.45, // Responsive width
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -154,7 +156,7 @@ class NavigationButtons extends StatelessWidget {
               backgroundColor: const Color(0xff0F073E),
             ),
             child: const Text(
-              '      Next      ',
+              'Next',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 25,
