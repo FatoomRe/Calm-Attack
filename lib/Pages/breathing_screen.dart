@@ -154,6 +154,7 @@ class NavigationButtons extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xff0F073E),
+              elevation: 9,
             ),
             child: const Text(
               'Next',
