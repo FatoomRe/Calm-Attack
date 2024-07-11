@@ -5,10 +5,9 @@ import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
 
 class VibrationScreen extends StatefulWidget {
-  const VibrationScreen({super.key});
+  const VibrationScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _VibrationScreenState createState() => _VibrationScreenState();
 }
 
@@ -41,76 +40,88 @@ class _VibrationScreenState extends State<VibrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 50),
-            const Text(
-              'Focus on',
-              style: TextStyle(
-                color: Color(0xff0F073E),
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Text(
-              'The Vibration',
-              style: TextStyle(
-                color: Color(0xff0F073E),
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 50),
-            //--------------------------------------------------------------
-            const SizedBox(
-              width: 300,
-              height: 300,
-              child: RiveAnimation.asset(
-                'assets/vibrationAni.riv',
-              ),
-            ),
-            const SizedBox(height: 35),
-            //-------------------------------------------------------ICON button-------
-            IconButton(
-              onPressed: _vibrating ? stopVibration : startVibration,
-              icon: _vibrating
-                  ? const Icon(Icons.pause, size: 50, color: Colors.red)
-                  : const Icon(Icons.play_arrow_rounded,
-                      size: 50, color: Colors.red),
-            ),
-            //--------------------------------------------------------------
-            SizedBox(
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  stopVibration();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const TasteScreen()));
-                },
-                style: ElevatedButton.styleFrom(
-                  // ignore: deprecated_member_use
-                  backgroundColor: const Color(0xff0F073E),
-                  elevation: 9,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                const Text(
+                  'Focus on',
+                  style: TextStyle(
+                    color: Color(0xff0F073E),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                child: const Text('      Next      ',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    )),
-              ),
-            ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(
+                const Text(
+                  'The Vibration',
+                  style: TextStyle(
+                    color: Color(0xff0F073E),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 20),
+                const SizedBox(
+                  width: 300,
+                  height: 300,
+                  child: RiveAnimation.asset('assets/vibrationAni.riv'),
+                ),
+                const SizedBox(height: 10),
+                IconButton(
+                  onPressed: _vibrating ? stopVibration : startVibration,
+                  icon: Icon(
+                    _vibrating ? Icons.pause : Icons.play_arrow_rounded,
+                    size: 50,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      stopVibration();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TasteScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff0F073E),
+                      elevation: 9,
+                    ),
+                    child: const Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const FinishScreen()));
-                },
-                child: const Text('Finish Session')),
-          ],
+                        builder: (context) => const FinishScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text('Finish Session'),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

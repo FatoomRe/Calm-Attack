@@ -90,7 +90,7 @@ class _AudioScreenState extends State<AudioScreen> {
                   });
                 },
               ),
-              SizedBox(height: screenHeight * 0.05),
+              SizedBox(height: screenHeight * 0.04),
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.45,
