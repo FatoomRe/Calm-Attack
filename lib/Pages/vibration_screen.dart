@@ -83,6 +83,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
+                  stopVibration();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
