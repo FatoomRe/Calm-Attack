@@ -49,7 +49,7 @@ class _AudioScreenState extends State<AudioScreen> {
                 'Focus on',
                 style: TextStyle(
                   color: Color(0xff0F073E),
-                  fontSize: 35,
+                  fontSize: 33,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -58,13 +58,13 @@ class _AudioScreenState extends State<AudioScreen> {
                 child: Text(
                   soundTexts[currentSoundIndex],
                   style: const TextStyle(
-                    fontSize: 35,
+                    fontSize: 33,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.03),
+              SizedBox(height: screenHeight * 0.02),
               Container(
                 width: screenWidth * 0.7,
                 height: screenHeight * 0.4,
@@ -90,7 +90,7 @@ class _AudioScreenState extends State<AudioScreen> {
                   });
                 },
               ),
-              SizedBox(height: screenHeight * 0.04),
+              SizedBox(height: screenHeight * 0.07),
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.45,

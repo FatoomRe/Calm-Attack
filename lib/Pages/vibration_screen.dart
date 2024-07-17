@@ -80,7 +80,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
                     color: Colors.red,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 9),
                 Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width * 0.45,
