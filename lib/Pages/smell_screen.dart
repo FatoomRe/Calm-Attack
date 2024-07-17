@@ -120,6 +120,7 @@ class SmellScreen extends StatelessWidget {
                   // ignore: sized_box_for_whitespace
                   Container(
                     height: 50,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(

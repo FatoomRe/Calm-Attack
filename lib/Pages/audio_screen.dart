@@ -64,7 +64,7 @@ class _AudioScreenState extends State<AudioScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: screenHeight * 0.03),
               Container(
                 width: screenWidth * 0.7,
                 height: screenHeight * 0.4,
@@ -82,7 +82,7 @@ class _AudioScreenState extends State<AudioScreen> {
                 ),
                 child: const Center(child: AudioSpectrumLines()),
               ),
-              SizedBox(height: screenHeight * 0.04),
+              SizedBox(height: screenHeight * 0.06),
               AudioPlayerButtons(
                 onSoundIndexChanged: (index) {
                   setState(() {
@@ -90,7 +90,7 @@ class _AudioScreenState extends State<AudioScreen> {
                   });
                 },
               ),
-              SizedBox(height: screenHeight * 0.07),
+              SizedBox(height: screenHeight * 0.04),
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.45,
