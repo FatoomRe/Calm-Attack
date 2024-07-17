@@ -81,7 +81,7 @@ class TasteScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             letterSpacing: 1.3,
-                            fontSize: 32,
+                            fontSize: 30,
                             fontWeight: FontWeight.w900,
                             color: Color(0xff0F073E),
                           ),
