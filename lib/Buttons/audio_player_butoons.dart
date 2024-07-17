@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class AudioPlayerButtons extends StatefulWidget {
+  final AudioPlayer player;
   final Function(int) onSoundIndexChanged;
 
-  const AudioPlayerButtons({required this.onSoundIndexChanged, super.key});
+  const AudioPlayerButtons({required this.player, required this.onSoundIndexChanged, super.key});
 
   @override
   State<AudioPlayerButtons> createState() => _AudioPlayerButtonsState();
 }
 
 class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
-  final player = AudioPlayer();
   final List<String> sounds = [
     'music-1.mp3', // Waves
     'music-2.mp3', // Rain
     'music-3.mp3', // Birds
     'music-4.mp3', // Fire
     'music-5.mp3', // Forest
-    'music-6.mp3', // Wind
+    'music-6.mp3',  // Wind
   ];
   int currentIndex = 0;
   bool isPlaying = false;
@@ -31,17 +31,15 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _buildIconButton(Icons.skip_previous, _playPreviousSound, const Color(0xffEBF4FD), const Color(0xff0F073E)),
-          const SizedBox(width: 35),
-          _buildIconButton(isPlaying ? Icons.pause : Icons.play_arrow, _togglePlayPause, const Color(0xff0F073E), const Color(0xffEBF4FD)),
-          const SizedBox(width: 35),
-          _buildIconButton(Icons.skip_next, _playNextSound, const Color(0xffEBF4FD), const Color(0xff0F073E)),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildIconButton(Icons.skip_previous, _playPreviousSound, const Color(0xffEBF4FD), const Color(0xff0F073E)),
+        const SizedBox(width: 35),
+        _buildIconButton(isPlaying ? Icons.pause : Icons.play_arrow, _togglePlayPause, const Color(0xff0F073E), const Color(0xffEBF4FD)),
+        const SizedBox(width: 35),
+        _buildIconButton(Icons.skip_next, _playNextSound, const Color(0xffEBF4FD), const Color(0xff0F073E)),
+      ],
     );
   }
 
@@ -71,7 +69,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
   Future<void> playSound() async {
     try {
       final sound = sounds[currentIndex];
-      await player.play(AssetSource(sound));
+      await widget.player.play(AssetSource(sound));
       setState(() {
         isPlaying = true;
       });
@@ -82,7 +80,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
 
   Future<void> pauseSound() async {
     try {
-      await player.pause();
+      await widget.player.pause();
       setState(() {
         isPlaying = false;
       });
@@ -92,14 +90,14 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
   }
 
   Future<void> _playNextSound() async {
-    await player.pause();
+    await widget.player.pause();
     currentIndex = (currentIndex + 1) % sounds.length;
     await playSound();
     widget.onSoundIndexChanged(currentIndex);
   }
 
   Future<void> _playPreviousSound() async {
-    await player.pause();
+    await widget.player.pause();
     currentIndex = (currentIndex - 1 + sounds.length) % sounds.length;
     await playSound();
     widget.onSoundIndexChanged(currentIndex);
@@ -115,7 +113,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
 
   @override
   void dispose() {
-    player.dispose();
+    widget.player.dispose();
     super.dispose();
   }
 }

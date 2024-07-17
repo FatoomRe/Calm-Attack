@@ -84,6 +84,7 @@ class _AudioScreenState extends State<AudioScreen> {
               ),
               SizedBox(height: screenHeight * 0.06),
               AudioPlayerButtons(
+                player: player,
                 onSoundIndexChanged: (index) {
                   setState(() {
                     currentSoundIndex = index;
@@ -91,7 +92,7 @@ class _AudioScreenState extends State<AudioScreen> {
                 },
               ),
               SizedBox(height: screenHeight * 0.04),
-              Container(
+              SizedBox(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.45,
                 child: ElevatedButton(
@@ -108,13 +109,13 @@ class _AudioScreenState extends State<AudioScreen> {
                     elevation: 9,
                   ),
                   child: const Text(
-              'Next',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+                    'Next',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               TextButton(
