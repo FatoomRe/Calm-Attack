@@ -77,7 +77,6 @@ We welcome contributions from the community! If you have an idea for an enhancem
 For any questions or suggestions, feel free to reach out:
 
 - **X**: [FatoomRe](https://x.com/FatoomRe)
-- **GitHub**: [FatoomRe](https://github.com/FatoomRe)
 - **Email**: [FatimahAlabbas1@outlook.sa](mailto:FatimahAlabbas1@outlook.sa)
 
 
