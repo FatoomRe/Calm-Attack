@@ -72,11 +72,11 @@ class _BreathingCloudState extends State<BreathingCloud>
       animation: _animation,
       builder: (context, child) {
         return Transform.scale(
-          scale:
-              _animation.value, // Scale the image based on the animation value.
+          // Scale the image based on the animation value.
+          scale: _animation.value,
           child: Container(
-            width:
-                _animation.value, // Set the width based on the animation value.
+            // Set the width based on the animation value.
+            width: _animation.value,
             child: Image.asset(_imagePath, width: 2.0, height: 2.0),
           ),
         );
