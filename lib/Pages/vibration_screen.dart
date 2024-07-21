@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, sized_box_for_whitespace
+
 import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:calmattack/Pages/taste_screen.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,7 @@ import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
 
 class VibrationScreen extends StatefulWidget {
-  const VibrationScreen({Key? key}) : super(key: key);
+  const VibrationScreen({super.key});
 
   @override
   _VibrationScreenState createState() => _VibrationScreenState();

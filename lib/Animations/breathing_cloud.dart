@@ -74,6 +74,7 @@ class _BreathingCloudState extends State<BreathingCloud>
         return Transform.scale(
           // Scale the image based on the animation value.
           scale: _animation.value,
+          // ignore: sized_box_for_whitespace
           child: Container(
             // Set the width based on the animation value.
             width: _animation.value,

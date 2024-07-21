@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:calmattack/Animations/breathing_cloud.dart';
 import 'package:calmattack/Pages/audio_screen.dart';
 import 'package:calmattack/Pages/finish_screen.dart';

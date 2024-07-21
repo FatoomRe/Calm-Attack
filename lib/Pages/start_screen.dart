@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'dart:math';
 
 import 'package:calmattack/Pages/breathing_screen.dart';

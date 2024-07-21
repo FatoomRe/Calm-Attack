@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:calmattack/Pages/smell_screen.dart';
 import 'package:flutter/material.dart';
