@@ -118,6 +118,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
                 ),
                 TextButton(
                   onPressed: () {
+                    stopVibration();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
