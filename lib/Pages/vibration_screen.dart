@@ -12,24 +12,28 @@ class VibrationScreen extends StatefulWidget {
 }
 
 class _VibrationScreenState extends State<VibrationScreen> {
-  bool _vibrating = false;
+
+  bool _vibrating = false; // Tracks whether vibration is active
 
   @override
   void initState() {
     super.initState();
-    startVibration();
+    startVibration(); // Start vibration when the screen initializes
   }
 
+  // Function to start vibration in a loop with a specific pattern
   void startVibration() async {
     setState(() {
       _vibrating = true;
     });
+    // Loop to keep vibrating as long as _vibrating is true
     while (_vibrating) {
-      Vibration.vibrate(pattern: [500, 500]);
-      await Future.delayed(const Duration(seconds: 1));
+      Vibration.vibrate(pattern: [500, 500]); // Vibrate for 500ms and pause for 500ms
+      await Future.delayed(const Duration(seconds: 1)); // Delay for 1 second
     }
   }
 
+  // Function to stop the vibration.
   void stopVibration() {
     setState(() {
       _vibrating = false;
@@ -72,6 +76,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
                   child: RiveAnimation.asset('assets/vibrationAni.riv'),
                 ),
                 const SizedBox(height: 10),
+                // Button to start/stop vibration
                 IconButton(
                   onPressed: _vibrating ? stopVibration : startVibration,
                   icon: Icon(
