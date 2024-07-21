@@ -11,11 +11,13 @@ class BreathingScreen extends StatefulWidget {
 }
 
 class _BreathingScreenState extends State<BreathingScreen> {
+  // Variable to hold the current breathing phase text.
   String _breathingText = 'INHALE';
 
+  // Function to update the breathing text.
   void _updateBreathingText(String text) {
     setState(() {
-      _breathingText = text;
+      _breathingText = text; // Updating the breathing text with the new value.
     });
   }
 
@@ -28,18 +30,20 @@ class _BreathingScreenState extends State<BreathingScreen> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            const BreathingPhases(),
+            const BreathingPhases(), // Widget to display the breathing phases.
             const SizedBox(height: 10),
             Text(
-              _breathingText,
+              _breathingText, // Displaying the current breathing phase text.
               style: const TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: screenSize.height * 0.2),
+            // Custom animation widget with callback to update text.
             BreathingCloud(callback: _updateBreathingText),
             SizedBox(height: screenSize.height * 0.3),
+            // Widget to display navigation buttons.
             const NavigationButtons(),
           ],
         ),
@@ -48,6 +52,7 @@ class _BreathingScreenState extends State<BreathingScreen> {
   }
 }
 
+// Stateless widget to display each breathing phase
 class BreathingPhases extends StatelessWidget {
   const BreathingPhases({super.key});
 
@@ -55,7 +60,7 @@ class BreathingPhases extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.08), // Responsive padding
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.08),
         child: const Row(
           children: [
             Expanded(
@@ -95,6 +100,7 @@ class BreathingPhases extends StatelessWidget {
   }
 }
 
+// Stateless widget to display each breathing phase.
 class BreathingPhaseWidget extends StatelessWidget {
   final String duration;
   final String phase;
@@ -135,6 +141,7 @@ class BreathingPhaseWidget extends StatelessWidget {
   }
 }
 
+// Stateless widget to display navigation buttons.
 class NavigationButtons extends StatelessWidget {
   const NavigationButtons({super.key});
 
