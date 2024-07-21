@@ -127,7 +127,8 @@ class SmellScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => FinishScreen(startTime: startTime),
+                            builder: (context) =>
+                                FinishScreen(startTime: startTime),
                           ),
                         );
                       },
@@ -137,7 +138,7 @@ class SmellScreen extends StatelessWidget {
                         elevation: 9,
                       ),
                       child: const Text(
-                        '      Next      ',
+                        'Next',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
@@ -151,7 +152,8 @@ class SmellScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FinishScreen(startTime: startTime),
+                          builder: (context) =>
+                              FinishScreen(startTime: startTime),
                         ),
                       );
                     },
