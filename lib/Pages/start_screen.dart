@@ -12,9 +12,12 @@ class StartScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
+        // Setting a linear gradient background for the container
         decoration: const BoxDecoration(
           gradient: LinearGradient(
+            // Gradient colors from dark blue to teal.
             colors: [Color.fromARGB(255, 38, 59, 173), Color(0xff00c4b2)],
+            // Gradient stops, indicating where each color should reach its full intensity.
             stops: [0.3, 1], // stops should ideally sum up to 1
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -36,7 +39,7 @@ class StartScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Transform.rotate(
-                angle: -17.8 * pi / 180,
+                angle: -17.8 * pi / 180, // Rotating the image by -17.8 degrees.
                 child: Image.asset(
                   'assets/SSAttack.png',
                   width: screenSize.width * 0.8, // Responsive width
