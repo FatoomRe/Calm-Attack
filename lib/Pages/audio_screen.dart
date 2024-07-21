@@ -8,7 +8,8 @@ import 'package:calmattack/Pages/vibration_screen.dart';
 import 'package:flutter/material.dart';
 
 class AudioScreen extends StatefulWidget {
-  const AudioScreen({super.key});
+  final DateTime startTime;
+  const AudioScreen({super.key, required this.startTime});
 
   @override
   _AudioScreenState createState() => _AudioScreenState();
@@ -88,7 +89,7 @@ class _AudioScreenState extends State<AudioScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const FinishScreen()),
+                    MaterialPageRoute(builder: (context) => FinishScreen(startTime: widget.startTime)),
                   );
                 },
                 child: const Text('Finish Session'),
@@ -134,7 +135,7 @@ class _AudioScreenState extends State<AudioScreen> {
           if (!mounted) return;
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const VibrationScreen()),
+            MaterialPageRoute(builder: (context) => VibrationScreen(startTime: widget.startTime)),
           );
         },
         style: ElevatedButton.styleFrom(

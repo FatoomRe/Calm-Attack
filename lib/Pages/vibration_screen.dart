@@ -7,7 +7,8 @@ import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
 
 class VibrationScreen extends StatefulWidget {
-  const VibrationScreen({super.key});
+  final DateTime startTime;
+  const VibrationScreen({super.key, required this.startTime});
 
   @override
   _VibrationScreenState createState() => _VibrationScreenState();
@@ -97,7 +98,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TasteScreen(),
+                          builder: (context) => TasteScreen(startTime: widget.startTime),
                         ),
                       );
                     },
@@ -120,7 +121,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const FinishScreen(),
+                        builder: (context) => FinishScreen(startTime: widget.startTime),
                       ),
                     );
                   },

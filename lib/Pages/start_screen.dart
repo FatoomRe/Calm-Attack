@@ -52,10 +52,11 @@ class StartScreen extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
+                      final startTime = DateTime.now(); // to Capture the start time
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const BreathingScreen(),
+                        builder: (context) => BreathingScreen(startTime: startTime), // Passing the start time to the next screen
                       ),
                     );
                   },

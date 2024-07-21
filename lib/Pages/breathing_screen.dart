@@ -6,7 +6,8 @@ import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 
 class BreathingScreen extends StatefulWidget {
-  const BreathingScreen({super.key});
+  final DateTime startTime;
+  const BreathingScreen({super.key, required this.startTime});
 
   @override
   State<BreathingScreen> createState() => _BreathingScreenState();
@@ -46,7 +47,7 @@ class _BreathingScreenState extends State<BreathingScreen> {
             BreathingCloud(callback: _updateBreathingText),
             SizedBox(height: screenSize.height * 0.3),
             // Widget to display navigation buttons.
-            const NavigationButtons(),
+            NavigationButtons(startTime: widget.startTime),
           ],
         ),
       ),
@@ -145,7 +146,8 @@ class BreathingPhaseWidget extends StatelessWidget {
 
 // Stateless widget to display navigation buttons.
 class NavigationButtons extends StatelessWidget {
-  const NavigationButtons({super.key});
+  final DateTime startTime;
+  const NavigationButtons({super.key, required this.startTime, });
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +160,7 @@ class NavigationButtons extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AudioScreen()),
+                MaterialPageRoute(builder: (context) =>  AudioScreen(startTime: startTime)),
               );
             },
             style: ElevatedButton.styleFrom(
@@ -179,7 +181,9 @@ class NavigationButtons extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const FinishScreen()),
+              MaterialPageRoute(
+                builder: (context) => FinishScreen(startTime: startTime),
+              ),
             );
           },
           child: const Text('Finish Session'),

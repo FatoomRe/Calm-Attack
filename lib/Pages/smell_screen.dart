@@ -2,7 +2,8 @@ import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 
 class SmellScreen extends StatelessWidget {
-  const SmellScreen({super.key});
+  final DateTime startTime;
+  const SmellScreen({super.key, required this.startTime});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +127,7 @@ class SmellScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const FinishScreen(),
+                            builder: (context) => FinishScreen(startTime: startTime),
                           ),
                         );
                       },
@@ -150,7 +151,7 @@ class SmellScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const FinishScreen(),
+                          builder: (context) => FinishScreen(startTime: startTime),
                         ),
                       );
                     },

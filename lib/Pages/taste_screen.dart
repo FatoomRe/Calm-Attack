@@ -5,7 +5,8 @@ import 'package:calmattack/Pages/smell_screen.dart';
 import 'package:flutter/material.dart';
 
 class TasteScreen extends StatelessWidget {
-  const TasteScreen({super.key});
+  final DateTime startTime;
+  const TasteScreen({super.key, required this.startTime});
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,7 @@ class TasteScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SmellScreen()),
+                                  builder: (context) => SmellScreen(startTime: startTime)),
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -135,7 +136,7 @@ class TasteScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const FinishScreen()),
+                                builder: (context) => FinishScreen(startTime: startTime)),
                           );
                         },
                         child: const Text('Finish Session'),

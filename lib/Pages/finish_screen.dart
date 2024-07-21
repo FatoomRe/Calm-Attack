@@ -4,10 +4,16 @@ import 'package:calmattack/Pages/start_screen.dart';
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatelessWidget {
-  const FinishScreen({super.key});
+  final DateTime startTime;
+  const FinishScreen({super.key, required this.startTime});
 
   @override
   Widget build(BuildContext context) {
+
+    final endTime = DateTime.now();
+    final timeSpent = endTime.difference(startTime);
+    final minutesSpent = timeSpent.inMinutes;
+
     return Scaffold(
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
@@ -56,9 +62,9 @@ class FinishScreen extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const Text(
-                    '1 Minute',
-                    style: TextStyle(
+                  Text(
+                    '$minutesSpent Minute',
+                    style: const TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff052D94),
