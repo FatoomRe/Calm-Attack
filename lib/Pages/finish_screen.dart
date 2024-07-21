@@ -4,15 +4,15 @@ import 'package:calmattack/Pages/start_screen.dart';
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatelessWidget {
-  final DateTime startTime;
+  final DateTime startTime; // Stores the start time of the activity.
   const FinishScreen({super.key, required this.startTime});
 
   @override
   Widget build(BuildContext context) {
 
-    final endTime = DateTime.now();
-    final timeSpent = endTime.difference(startTime);
-    final minutesSpent = timeSpent.inMinutes;
+    final endTime = DateTime.now(); // Captures the current time as the end time.
+    final timeSpent = endTime.difference(startTime); // Calculates the duration spent on the activity.
+    final minutesSpent = timeSpent.inMinutes; // Converts the duration to minutes.
 
     return Scaffold(
       body: LayoutBuilder(
