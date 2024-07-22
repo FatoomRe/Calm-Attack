@@ -21,6 +21,10 @@ Welcome to **Calm Attack**, an open-source Flutter-based mobile application desi
 - **Smell Imagination Exercise**:  This exercise guides users to imagine calming scents to help them relax and reduce stress.
 - **Test Imagination Exercise**: Exercise that challenges users to imagine and visualize specific scenarios or images to distract from panic-inducing thoughts.
 
+
+https://github.com/user-attachments/assets/0bcc22bf-7c62-40f6-ba8c-3c11fd60e897
+
+
 ## Installation
 
 ### Prerequisites
