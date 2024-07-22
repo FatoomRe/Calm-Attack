@@ -54,7 +54,7 @@ Welcome to **Calm Attack**, an open-source Flutter-based mobile application desi
 
 ## Contributing
 
-We welcome contributions from the community! If you have an idea for an enhancement or have found a bug, please follow these steps:
+I welcome contributions from the community! If you have an idea for an enhancement or have found a bug, please follow these steps:
 
 1. **Fork the repository**
 2. **Create a new branch**
