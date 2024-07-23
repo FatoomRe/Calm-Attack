@@ -86,6 +86,6 @@ For any questions or suggestions, feel free to reach out:
 
 ## License
 
-[This project is licensed under the Creative Commons Zero v1.0 Universal License.](LICENSE.txt)
+[This project is licensed under the Creative Commons Zero v1.0 Universal License.](LICENSE)
 
 Thank you for using Calm Attack! I hope it helps you find peace and calm during difficult moments.
