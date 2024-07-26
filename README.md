@@ -80,8 +80,6 @@ I welcome contributions from the community! If you have an idea for an enhanceme
 
 [This project is licensed under the Creative Commons Zero v1.0 Universal License.](LICENSE)
 
-Thank you for using Calm Attack! I hope it helps you find peace and calm during difficult moments.
-
 
 ## Contact
 
@@ -89,3 +87,5 @@ For any questions or suggestions, feel free to reach out:
 
 - **X**: [FatoomRe](https://x.com/FatoomRe)
 - **Email**: [FatimahAlabbas1@outlook.sa](mailto:FatimahAlabbas1@outlook.sa)
+
+Thank you for using Calm Attack! I hope it helps you find peace and calm during difficult moments.
