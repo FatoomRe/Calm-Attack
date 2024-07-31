@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/0bcc22bf-7c62-40f6-ba8c-3c11fd60e897
 ### Prerequisites
 
 - [Flutter](https://flutter.dev/docs/get-started/install) SDK
-- [Android Studio](https://developer.android.com/studio) or [Xcode](https://developer.apple.com/xcode/) for iOS development
+- [VS Code](https://code.visualstudio.com/) or [Xcode](https://developer.apple.com/xcode/) for iOS development
 
 ### Steps
 
