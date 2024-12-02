@@ -1,6 +1,6 @@
 # Calm Attack 👾⚔️☁️
 
-Welcome to **Calm Attack**, an open-source Flutter-based mobile application designed to assist individuals experiencing panic attacks. This app offers a variety of exercises aimed at helping users calm down and regain control.
+Welcome to **Calm Attack**, an open-source Flutter-based mobile application designed to assist individuals experiencing **Panic Attacks**. This app offers a variety of exercises aimed at helping users calm down and regain control.
 
 ![iphone-slow-reveal](https://github.com/FatoomRe/Calm-Attack/assets/112693194/56f8d0ff-a5ab-4330-873c-c25a9e59a0d8)
 
