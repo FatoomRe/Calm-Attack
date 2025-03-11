@@ -101,7 +101,7 @@ class _AudioScreenState extends State<AudioScreen> {
                   await player.stop();
                   if (!mounted) return;
                   Navigator.push(
-                    context, 
+                    context,
                     MaterialPageRoute(
                         builder: (context) =>
                             FinishScreen(startTime: widget.startTime)),
