@@ -16,10 +16,8 @@ class AudioScreen extends StatefulWidget {
 }
 
 class _AudioScreenState extends State<AudioScreen> {
-  // Index to track the currently playing sound.
-  int currentSoundIndex = 0;
+  int currentSoundIndex = 0; // Index to track the currently playing sound.
   final AudioPlayer player = AudioPlayer();
-  // List of descriptive texts for each sound.
   final List<String> soundTexts = [
     'Waves',
     'Rain',
@@ -27,8 +25,7 @@ class _AudioScreenState extends State<AudioScreen> {
     'Fire',
     'Forest',
     'Wind'
-  ];
-  // List of sound file paths
+  ]; // List of descriptive texts for each sound.
   final List<String> sounds = [
     'assets/music-1.mp3',
     'assets/music-2.mp3',
@@ -36,11 +33,10 @@ class _AudioScreenState extends State<AudioScreen> {
     'assets/music-4.mp3',
     'assets/music-5.mp3',
     'assets/music-6.mp3',
-  ];
+  ]; // List of sound file paths.
 
   @override
   Widget build(BuildContext context) {
-    // Creating a linear gradient for the text.
     final Shader linearGradient = const LinearGradient(
       colors: <Color>[Color(0xff3E3BD4), Color(0xff1AAC9B)],
       stops: [0.1, 0.40],
@@ -48,7 +44,6 @@ class _AudioScreenState extends State<AudioScreen> {
       end: Alignment.centerRight,
     ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 
-    // Getting screen height and width for responsive layout.
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -56,9 +51,9 @@ class _AudioScreenState extends State<AudioScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+          padding: EdgeInsets.only(top: screenHeight * 0.15), // Move components down
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start, // Adjust alignment
             children: [
               const Text(
                 'Focus on',
@@ -118,32 +113,32 @@ class _AudioScreenState extends State<AudioScreen> {
 
   // Function to build the audio spectrum container.
   Container buildAudioSpectrumContainer(double screenWidth, double screenHeight) {
-  return Container(
-    width: screenWidth * 0.7,
-    height: screenHeight * 0.4,
-    constraints: BoxConstraints(
-      minWidth: 250,
-      minHeight: 200,
-      maxWidth: 400,
-      maxHeight: 300,
-    ),
-    decoration: BoxDecoration(
-      color: const Color(0xffEBF4FD),
-      borderRadius: BorderRadius.circular(20),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.7),
-          spreadRadius: 0.1,
-          blurRadius: 1,
-          offset: const Offset(0, 3),
-        ),
-      ],
-    ),
-    child: const Center(
-      child: AudioSpectrumLines(), // Displaying the audio spectrum animation
-    ),
-  );
-}
+    return Container(
+      width: screenWidth * 0.7,
+      height: screenHeight * 0.4,
+      constraints: const BoxConstraints(
+        minWidth: 250,
+        minHeight: 200,
+        maxWidth: 400,
+        maxHeight: 300,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xffEBF4FD),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            spreadRadius: 0.1,
+            blurRadius: 1,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: const Center(
+        child: AudioSpectrumLines(), // Displaying the audio spectrum animation
+      ),
+    );
+  }
 
   // Function to build the 'Next' button.
   SizedBox buildNextButton(BuildContext context, double screenWidth) {

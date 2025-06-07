@@ -15,7 +15,6 @@ class VibrationScreen extends StatefulWidget {
 }
 
 class _VibrationScreenState extends State<VibrationScreen> {
-
   bool _vibrating = false; // Tracks whether vibration is active
 
   @override
@@ -51,9 +50,9 @@ class _VibrationScreenState extends State<VibrationScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start, // Adjust alignment
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 55), // Add extra space at the top
                 const Text(
                   'Focus on',
                   style: TextStyle(
@@ -72,13 +71,13 @@ class _VibrationScreenState extends State<VibrationScreen> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 50),
                 const SizedBox(
                   width: 300,
                   height: 300,
                   child: RiveAnimation.asset('assets/vibrationAni.riv'),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 // Button to start/stop vibration
                 IconButton(
                   onPressed: _vibrating ? stopVibration : startVibration,
@@ -88,7 +87,7 @@ class _VibrationScreenState extends State<VibrationScreen> {
                     color: Colors.red,
                   ),
                 ),
-                const SizedBox(height: 9),
+                const SizedBox(height: 36),
                 Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width * 0.45,
