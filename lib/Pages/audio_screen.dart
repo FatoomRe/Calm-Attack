@@ -117,28 +117,33 @@ class _AudioScreenState extends State<AudioScreen> {
   }
 
   // Function to build the audio spectrum container.
-  Container buildAudioSpectrumContainer(
-      double screenWidth, double screenHeight) {
-    return Container(
-      width: screenWidth * 0.7,
-      height: screenHeight * 0.4,
-      decoration: BoxDecoration(
-        color: const Color(0xffEBF4FD),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
-            spreadRadius: 0.1,
-            blurRadius: 1,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: const Center(
-          child:
-              AudioSpectrumLines()), // Displaying the audio spectrum animation.
-    );
-  }
+  Container buildAudioSpectrumContainer(double screenWidth, double screenHeight) {
+  return Container(
+    width: screenWidth * 0.7,
+    height: screenHeight * 0.4,
+    constraints: BoxConstraints(
+      minWidth: 250,
+      minHeight: 200,
+      maxWidth: 400,
+      maxHeight: 300,
+    ),
+    decoration: BoxDecoration(
+      color: const Color(0xffEBF4FD),
+      borderRadius: BorderRadius.circular(20),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.7),
+          spreadRadius: 0.1,
+          blurRadius: 1,
+          offset: const Offset(0, 3),
+        ),
+      ],
+    ),
+    child: const Center(
+      child: AudioSpectrumLines(), // Displaying the audio spectrum animation
+    ),
+  );
+}
 
   // Function to build the 'Next' button.
   SizedBox buildNextButton(BuildContext context, double screenWidth) {
