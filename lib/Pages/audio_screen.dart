@@ -1,10 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:calmattack/Animations/audio_spectrum_lines.dart';
-import 'package:calmattack/Buttons/audio_player_butoons.dart';
-import 'package:calmattack/Pages/finish_screen.dart';
-import 'package:calmattack/Pages/vibration_screen.dart';
+import '../Animations/audio_spectrum_lines.dart';
+import '../Buttons/audio_player_buttons.dart';
+import '../Pages/finish_screen.dart';
+import '../Pages/vibration_screen.dart';
 import 'package:flutter/material.dart';
 
 class AudioScreen extends StatefulWidget {
@@ -101,7 +101,7 @@ class _AudioScreenState extends State<AudioScreen> {
                   await player.stop();
                   if (!mounted) return;
                   Navigator.push(
-                    context, 
+                    context,
                     MaterialPageRoute(
                         builder: (context) =>
                             FinishScreen(startTime: widget.startTime)),

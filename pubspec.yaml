@@ -1,5 +1,5 @@
 name: calmattack
-description: A new Flutter project.
+description: A Flutter project to help manage panic attacks.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -93,7 +93,6 @@ flutter:
     - assets/Smell/F7.png
     - assets/Smell/F8.png
     #------------------------------------
-    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
