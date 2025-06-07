@@ -6,9 +6,13 @@ import 'package:audioplayers/audioplayers.dart';
 class AudioPlayerButtons extends StatefulWidget {
   final AudioPlayer player;
   final Function(int) onSoundIndexChanged;
+  final Function(bool) onPlayPauseChanged; // Callback to notify play/pause state
 
   const AudioPlayerButtons(
-      {required this.player, required this.onSoundIndexChanged, super.key});
+      {required this.player,
+       required this.onSoundIndexChanged,
+        required this.onPlayPauseChanged,
+        super.key});
 
   @override
   State<AudioPlayerButtons> createState() => _AudioPlayerButtonsState();
@@ -87,6 +91,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
       setState(() {
         isPlaying = true;
       });
+      widget.onPlayPauseChanged(isPlaying); // Notify parent widget
     } catch (e) {
       print("Error playing sound: $e");
     }
@@ -99,6 +104,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
       setState(() {
         isPlaying = false;
       });
+      widget.onPlayPauseChanged(isPlaying);
     } catch (e) {
       print("Error pausing sound: $e");
     }

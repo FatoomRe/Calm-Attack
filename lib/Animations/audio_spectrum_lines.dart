@@ -1,8 +1,10 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+
 class AudioSpectrumLines extends StatefulWidget {
-  const AudioSpectrumLines({super.key});
+  final bool isPlaying; // Add a boolean to control the animation state
+
+  const AudioSpectrumLines({super.key, required this.isPlaying});
 
   @override
   State<AudioSpectrumLines> createState() => _AudioSpectrumLinesState();
@@ -10,13 +12,9 @@ class AudioSpectrumLines extends StatefulWidget {
 
 class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
     with TickerProviderStateMixin {
-  // List to hold the animation controllers for each line.
   late List<AnimationController> controllers;
-  // List to hold the animations for the height of each line.
   late List<Animation<double>> animations;
-  // The number of lines in the spectrum.
   final count = 6;
-  // Random number generator for animation variations.
   final random = Random();
 
   @override
@@ -43,6 +41,22 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
   }
 
   @override
+  void didUpdateWidget(AudioSpectrumLines oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    // Pause or resume animations based on the `isPlaying` property.
+    if (!widget.isPlaying) {
+      for (var controller in controllers) {
+        controller.stop(); // Stop the animations
+      }
+    } else {
+      for (var controller in controllers) {
+        controller.repeat(reverse: true); // Resume the animations
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     // Build a row of animated lines.
     return Row(
@@ -52,16 +66,13 @@ class _AudioSpectrumLinesState extends State<AudioSpectrumLines>
           animation: controllers[index],
           builder: (BuildContext context, Widget? child) {
             return Container(
-              // Margin to separate lines, except for the last one.
               margin: index == (count - 1)
                   ? EdgeInsets.zero
                   : const EdgeInsets.only(right: 11),
-              // Animated height based on the current animation value.
               height: animations[index].value,
               width: 16,
               decoration: BoxDecoration(
                 color: const Color(0xff0F073E),
-                // Rounded corners for the line.
                 borderRadius: BorderRadius.circular(9999),
               ),
             );

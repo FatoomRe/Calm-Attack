@@ -18,6 +18,8 @@ class AudioScreen extends StatefulWidget {
 class _AudioScreenState extends State<AudioScreen> {
   int currentSoundIndex = 0; // Index to track the currently playing sound.
   final AudioPlayer player = AudioPlayer();
+  bool isPlaying = false; // Track play/pause state.
+
   final List<String> soundTexts = [
     'Waves',
     'Rain',
@@ -26,6 +28,7 @@ class _AudioScreenState extends State<AudioScreen> {
     'Forest',
     'Wind'
   ]; // List of descriptive texts for each sound.
+
   final List<String> sounds = [
     'assets/music-1.mp3',
     'assets/music-2.mp3',
@@ -51,9 +54,9 @@ class _AudioScreenState extends State<AudioScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: screenHeight * 0.15), // Move components down
+          padding: EdgeInsets.only(top: screenHeight * 0.15),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start, // Adjust alignment
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const Text(
                 'Focus on',
@@ -64,11 +67,9 @@ class _AudioScreenState extends State<AudioScreen> {
                 ),
               ),
               ShaderMask(
-                shaderCallback: (bounds) =>
-                    linearGradient, // Applying the gradient to the text.
+                shaderCallback: (bounds) => linearGradient,
                 child: Text(
-                  soundTexts[
-                      currentSoundIndex], // Displaying the current sound's descriptive text.
+                  soundTexts[currentSoundIndex],
                   style: const TextStyle(
                     fontSize: 33,
                     fontWeight: FontWeight.bold,
@@ -80,17 +81,20 @@ class _AudioScreenState extends State<AudioScreen> {
               buildAudioSpectrumContainer(screenWidth, screenHeight),
               SizedBox(height: screenHeight * 0.06),
               AudioPlayerButtons(
-                player: player, // Passing the audio player instance.
+                player: player,
                 onSoundIndexChanged: (index) {
                   setState(() {
-                    currentSoundIndex =
-                        index; // Updating the current sound index when changed.
+                    currentSoundIndex = index;
+                  });
+                },
+                onPlayPauseChanged: (playing) {
+                  setState(() {
+                    isPlaying = playing; // Update play/pause state
                   });
                 },
               ),
               SizedBox(height: screenHeight * 0.04),
-              buildNextButton(
-                  context, screenWidth), // Building the 'Next' button.
+              buildNextButton(context, screenWidth),
               TextButton(
                 onPressed: () async {
                   await player.stop();
@@ -98,8 +102,9 @@ class _AudioScreenState extends State<AudioScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            FinishScreen(startTime: widget.startTime)),
+                      builder: (context) =>
+                          FinishScreen(startTime: widget.startTime),
+                    ),
                   );
                 },
                 child: const Text('Finish Session'),
@@ -134,8 +139,8 @@ class _AudioScreenState extends State<AudioScreen> {
           ),
         ],
       ),
-      child: const Center(
-        child: AudioSpectrumLines(), // Displaying the audio spectrum animation
+      child: Center(
+        child: AudioSpectrumLines(isPlaying: isPlaying), // Pass play/pause state
       ),
     );
   }
@@ -152,8 +157,9 @@ class _AudioScreenState extends State<AudioScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    VibrationScreen(startTime: widget.startTime)),
+              builder: (context) =>
+                  VibrationScreen(startTime: widget.startTime),
+            ),
           );
         },
         style: ElevatedButton.styleFrom(
