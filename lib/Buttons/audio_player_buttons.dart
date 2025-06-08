@@ -6,13 +6,14 @@ import 'package:audioplayers/audioplayers.dart';
 class AudioPlayerButtons extends StatefulWidget {
   final AudioPlayer player;
   final Function(int) onSoundIndexChanged;
-  final Function(bool) onPlayPauseChanged; // Callback to notify play/pause state
+  final Function(bool)
+      onPlayPauseChanged; // Callback to notify play/pause state
 
   const AudioPlayerButtons(
       {required this.player,
-       required this.onSoundIndexChanged,
-        required this.onPlayPauseChanged,
-        super.key});
+      required this.onSoundIndexChanged,
+      required this.onPlayPauseChanged,
+      super.key});
 
   @override
   State<AudioPlayerButtons> createState() => _AudioPlayerButtonsState();

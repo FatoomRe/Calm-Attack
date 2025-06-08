@@ -16,10 +16,12 @@ class VibrationScreen extends StatefulWidget {
 
 class _VibrationScreenState extends State<VibrationScreen> {
   bool _vibrating = false; // Tracks whether vibration is active
+  late RiveAnimationController _riveController; // Controller for Rive animation
 
   @override
   void initState() {
     super.initState();
+    _riveController = SimpleAnimation('wave'); // Initialize Rive animation controller
     startVibration(); // Start vibration when the screen initializes
   }
 
@@ -27,19 +29,27 @@ class _VibrationScreenState extends State<VibrationScreen> {
   void startVibration() async {
     setState(() {
       _vibrating = true;
+      _riveController.isActive = true; // Activate the Rive animation
     });
+
     // Loop to keep vibrating as long as _vibrating is true
     while (_vibrating) {
-      Vibration.vibrate(pattern: [500, 500]); // Vibrate for 500ms and pause for 500ms
-      await Future.delayed(const Duration(seconds: 1)); // Delay for 1 second
+      if (await Vibration.hasCustomVibrationsSupport() ?? false) {
+        Vibration.vibrate(pattern: [500, 500]); // Vibrate for 500ms and pause for 500ms
+      } else {
+        Vibration.vibrate(duration: 500); // Fallback for devices without custom vibration support
+      }
+      await Future.delayed(const Duration(seconds: 3)); // Delay for 3 seconds
     }
   }
 
-  // Function to stop the vibration.
+  // Function to stop the vibration and animation
   void stopVibration() {
     setState(() {
       _vibrating = false;
+      _riveController.isActive = false; // Deactivate the Rive animation
     });
+    Vibration.cancel(); // Cancel any ongoing vibration
   }
 
   @override
@@ -72,13 +82,16 @@ class _VibrationScreenState extends State<VibrationScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 50),
-                const SizedBox(
+                SizedBox(
                   width: 300,
                   height: 300,
-                  child: RiveAnimation.asset('assets/vibrationAni.riv'),
+                  child: RiveAnimation.asset(
+                    'assets/vibrationAni.riv',
+                    controllers: [_riveController], // Attach the controller
+                  ),
                 ),
                 const SizedBox(height: 20),
-                // Button to start/stop vibration
+                // Button to start/stop vibration and animation
                 IconButton(
                   onPressed: _vibrating ? stopVibration : startVibration,
                   icon: Icon(
@@ -97,7 +110,8 @@ class _VibrationScreenState extends State<VibrationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TasteScreen(startTime: widget.startTime),
+                          builder: (context) =>
+                              TasteScreen(startTime: widget.startTime),
                         ),
                       );
                     },
@@ -121,7 +135,8 @@ class _VibrationScreenState extends State<VibrationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FinishScreen(startTime: widget.startTime),
+                        builder: (context) =>
+                            FinishScreen(startTime: widget.startTime),
                       ),
                     );
                   },
@@ -133,5 +148,11 @@ class _VibrationScreenState extends State<VibrationScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    stopVibration(); // Ensure vibration and animation stop when the screen is disposed
+    super.dispose();
   }
 }

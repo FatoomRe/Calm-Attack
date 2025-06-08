@@ -117,7 +117,8 @@ class _AudioScreenState extends State<AudioScreen> {
   }
 
   // Function to build the audio spectrum container.
-  Container buildAudioSpectrumContainer(double screenWidth, double screenHeight) {
+  Container buildAudioSpectrumContainer(
+      double screenWidth, double screenHeight) {
     return Container(
       width: screenWidth * 0.7,
       height: screenHeight * 0.4,
@@ -140,7 +141,8 @@ class _AudioScreenState extends State<AudioScreen> {
         ],
       ),
       child: Center(
-        child: AudioSpectrumLines(isPlaying: isPlaying), // Pass play/pause state
+        child:
+            AudioSpectrumLines(isPlaying: isPlaying), // Pass play/pause state
       ),
     );
   }
