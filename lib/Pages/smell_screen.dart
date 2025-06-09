@@ -1,3 +1,4 @@
+import 'package:calmattack/Pages/bubble_pop_game_screen.dart';
 import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -127,13 +128,11 @@ class SmellScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                FinishScreen(startTime: startTime),
+                            builder: (context) => BubblePopGameScreen(),
                           ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        // ignore: deprecated_member_use
                         backgroundColor: const Color(0xff0F073E),
                         elevation: 9,
                       ),
