@@ -1,8 +1,7 @@
-
 import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:audioplayers/audioplayers.dart'; // <-- Add this import
+import 'package:audioplayers/audioplayers.dart';
 
 class BubblePopGameScreen extends StatefulWidget {
   const BubblePopGameScreen({super.key});
@@ -12,32 +11,32 @@ class BubblePopGameScreen extends StatefulWidget {
 }
 
 class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
-  List<Offset> bubbles = [];
-  List<int> bubbleNumbers = [];
-  List<Color> bubbleColors = [];
-  int nextNumberToPop = 1;
-  Random random = Random();
+  List<Offset> bubbles = []; // Stores bubble positions
+  List<int> bubbleNumbers = []; // Stores bubble numbers (1 to 20)
+  List<Color> bubbleColors = []; // Stores colors of the bubbles
+  int nextNumberToPop = 1; // The next correct number user should tap
+  Random random = Random(); // For generating random positions/colors
 
-  double? lastBubbleAreaWidth;
-  double? lastBubbleAreaHeight;
+  double? lastBubbleAreaWidth; // Cache last known width of bubble area
+  double? lastBubbleAreaHeight; // Cache last known height of bubble area
 
-  static const int totalBubbles = 20;
+  static const int totalBubbles = 20; // Total number of bubbles
   final List<String> popSounds = [
     'assets/pop1.mp3',
     'assets/pop2.mp3',
     'assets/pop3.mp3',
-  ];
-  final AudioPlayer audioPlayer = AudioPlayer();
+  ]; // Pop sound assets
+  final AudioPlayer audioPlayer = AudioPlayer(); // Audio player instance
 
-  // Generate a list of 20 unique vivid colors
+  // Generates unique vivid colors using HSV color space
   List<Color> generateUniqueVividColors(int count) {
-    // Spread hues evenly around the color wheel
     return List.generate(count, (i) {
-      double hue = (i * (360.0 / count)) % 360;
-      return HSVColor.fromAHSV(1.0, hue, 0.95, 0.95).toColor();
-    })..shuffle(random);
+      double hue = (i * (360.0 / count)) % 360; // Spread hues evenly
+      return HSVColor.fromAHSV(1.0, hue, 0.95, 0.95).toColor(); // Convert HSV to Color
+    })..shuffle(random); // Shuffle for randomness
   }
 
+  // Generate bubbles with random non-overlapping positions
   void generateBubbles(double bubbleAreaWidth, double bubbleAreaHeight) {
     final double bubbleSize = bubbleAreaWidth * 0.12;
 
@@ -45,20 +44,20 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
     bubbleNumbers.clear();
     bubbleColors.clear();
 
-    // Get unique vivid colors (shuffled for randomness)
-    final colors = generateUniqueVividColors(totalBubbles);
+    final colors = generateUniqueVividColors(totalBubbles); // Get vivid colors
 
     for (int i = 1; i <= totalBubbles; i++) {
       Offset newBubblePosition;
-
       int tries = 0;
+
+      // Keep trying until a non-overlapping position is found
       do {
         newBubblePosition = Offset(
           random.nextDouble() * (bubbleAreaWidth - bubbleSize),
           random.nextDouble() * (bubbleAreaHeight - bubbleSize),
         );
         tries++;
-        if (tries > 1000) break;
+        if (tries > 1000) break; // Avoid infinite loops
       } while (bubbles.any((bubble) =>
           (bubble.dx - newBubblePosition.dx).abs() < bubbleSize &&
           (bubble.dy - newBubblePosition.dy).abs() < bubbleSize));
@@ -69,37 +68,40 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
     }
   }
 
+  // Plays a random pop sound from the list
   Future<void> playPopSound() async {
-    // Pick a random pop sound from the list
     final soundPath = popSounds[random.nextInt(popSounds.length)];
     try {
       await audioPlayer.play(AssetSource(soundPath.replaceFirst('assets/', '')));
     } catch (e) {
-      // ignore sound errors
+      // Ignore any audio errors
     }
   }
 
+  // Handles popping logic when a bubble is tapped
   void popBubble(int index) {
     if (bubbleNumbers[index] == nextNumberToPop) {
-      playPopSound(); // Play sound on correct pop
+      playPopSound(); // Correct bubble
       setState(() {
         bubbles.removeAt(index);
         bubbleNumbers.removeAt(index);
         bubbleColors.removeAt(index);
         nextNumberToPop++;
 
-        // If all bubbles are popped, reset the game!
+        // All bubbles popped — reset the game
         if (bubbles.isEmpty) {
           resetGame();
         }
       });
     } else {
+      // Show message if wrong bubble tapped
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please pop bubble number $nextNumberToPop')),
       );
     }
   }
 
+  // Resets the game with a new bubble layout
   void resetGame() {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
@@ -117,7 +119,7 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
 
   @override
   void dispose() {
-    audioPlayer.dispose();
+    audioPlayer.dispose(); // Clean up audio player
     super.dispose();
   }
 
@@ -131,6 +133,7 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
     final double bubbleAreaHeight =
         screenHeight - headerHeight - footerHeight - screenHeight * 0.1;
 
+    // Generate new bubbles if area changed or empty
     if (bubbles.isEmpty ||
         lastBubbleAreaWidth != screenWidth ||
         lastBubbleAreaHeight != bubbleAreaHeight) {
@@ -146,6 +149,7 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
         child: Column(
           children: [
             SizedBox(height: headerHeight * 0.5),
+            // Game header
             Container(
               height: headerHeight * 0.5,
               padding: EdgeInsets.symmetric(
@@ -164,6 +168,7 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
                 ),
               ),
             ),
+            // Bubble area
             SizedBox(
               width: screenWidth,
               height: bubbleAreaHeight,
@@ -177,7 +182,7 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
                     left: position.dx,
                     top: position.dy,
                     child: GestureDetector(
-                      onTap: () => popBubble(index),
+                      onTap: () => popBubble(index), // Handle bubble tap
                       child: CustomPaint(
                         size: Size(bubbleSize, bubbleSize),
                         painter: BubblePainter(
@@ -190,6 +195,7 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
                 }).toList(),
               ),
             ),
+            // Footer with Next and Finish buttons
             Container(
               height: footerHeight,
               width: double.infinity,
@@ -250,9 +256,10 @@ class _BubblePopGameScreenState extends State<BubblePopGameScreen> {
   }
 }
 
+// Custom painter for rendering each bubble
 class BubblePainter extends CustomPainter {
-  final Color color;
-  final int number;
+  final Color color; // Bubble color
+  final int number; // Number displayed in bubble
 
   BubblePainter({required this.color, required this.number});
 
@@ -260,7 +267,7 @@ class BubblePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final bubblePaint = Paint()
       ..shader = RadialGradient(
-        center: Alignment(-0.3, -0.3),
+        center: Alignment(-0.3, -0.3), // Gradient center for glossy effect
         radius: 0.8,
         colors: [
           color.withOpacity(0.97),
@@ -271,21 +278,22 @@ class BubblePainter extends CustomPainter {
       ).createShader(Rect.fromCircle(center: Offset(size.width / 2, size.height / 2), radius: size.width / 2));
 
     final highlightPaint = Paint()
-      ..color = Colors.white.withOpacity(0.22);
+      ..color = Colors.white.withOpacity(0.22); // Highlight overlay
 
-    // Draw main bubble
+    // Draw main bubble with radial gradient
     canvas.drawCircle(Offset(size.width / 2, size.height / 2), size.width / 2, bubblePaint);
-    // Draw highlight (top left)
+    // Draw top-left highlight
     canvas.drawOval(
       Rect.fromLTWH(size.width * 0.18, size.height * 0.15, size.width * 0.3, size.height * 0.22),
       highlightPaint,
     );
-    // Draw inner shine
+    // Draw inner bottom shine
     canvas.drawOval(
       Rect.fromLTWH(size.width * 0.58, size.height * 0.62, size.width * 0.18, size.height * 0.10),
       Paint()..color = Colors.white.withOpacity(0.12),
     );
-    // Draw the number
+
+    // Draw the bubble number at the center
     final textPainter = TextPainter(
       text: TextSpan(
         text: '$number',
