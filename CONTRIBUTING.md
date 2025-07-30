@@ -6,7 +6,7 @@ Thank you for considering contributing to **Calm Attack**! Your involvement help
 
 ## 🌟 Table of Contents
 
-- [ Getting Started](#-getting-started)
+- [🚀 Getting Started](#-getting-started)
 - [🛠️ How to Contribute](#️-how-to-contribute)
 - [📋 Development Guidelines](#-development-guidelines)
 - [📤 Submitting Changes](#-submitting-changes)
