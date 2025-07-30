@@ -405,12 +405,6 @@ dev_dependencies:
 - [Flutter Accessibility](https://flutter.dev/docs/development/accessibility-and-localization/accessibility)
 - [Mobile Accessibility Best Practices](https://example.com)
 
-### 📞 Crisis Resources
-- **National Crisis Text Line**: Text HOME to 741741
-- **National Suicide Prevention Lifeline**: 988
-- **Crisis Chat**: [Online crisis support](https://example.com)
-- **International Resources**: [Global crisis support](https://example.com)
-
 ---
 
 ## 📞 Support & Contact
@@ -438,6 +432,6 @@ dev_dependencies:
 
 *"The best way to take care of the future is to take care of the present moment."* - Thich Nhat Hanh
 
-**Made with 💙 by a community that cares**
+**Made with 💙 by a person that care**
 
 </div>
