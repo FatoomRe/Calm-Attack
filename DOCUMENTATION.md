@@ -423,9 +423,6 @@ dev_dependencies:
 
 ### 🤝 Contributing
 - Read our [Contributing Guide](CONTRIBUTING.md)
-- Review our [Code of Conduct](CODE_OF_CONDUCT.md)
-- Check our [Security Policy](SECURITY.md)
-- See our [Changelog](CHANGELOG.md)
 
 ---
 

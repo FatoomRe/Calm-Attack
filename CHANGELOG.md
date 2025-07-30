@@ -5,63 +5,57 @@ All notable changes to **Calm Attack** will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased] - In Development 🚧
 
-### 🔜 Coming Soon
-- 🌙 Dark mode support
-- 📊 Progress tracking
-- 🔔 Gentle reminder notifications
-- 🌍 Multi-language support
-
----
-
-## [1.0.0] - 2025-01-XX
-
-### ✨ Added
-- 🫁 **Breathing Exercise** - Guided breathing with visual cues
+### � Currently Working On
+- 🫁 **Breathing Exercise** - Guided breathing with visual cues and 4-7-8 technique
 - 🎵 **Sound Focus Exercise** - Calming audio environments for grounding
 - 📳 **Vibration Focus Exercise** - Haptic feedback for physical grounding
-- 🌸 **Smell Imagination Exercise** - Guided scent visualization
-- 🍃 **Taste Imagination Exercise** - Mindful taste visualization
-- 📱 Cross-platform support (iOS & Android)
-- 🎨 Beautiful, calming user interface
-- ♿ Accessibility features
-- 🔒 Complete offline functionality
-- 📖 Comprehensive documentation
+- 🌸 **Smell Imagination Exercise** - Guided scent visualization with beautiful imagery
+- 🍃 **Taste Imagination Exercise** - Mindful taste visualization scenarios
+- 🫧 **Bubble Pop Game** - Interactive cognitive engagement through sequential bubble popping
+- 📱 Cross-platform Flutter implementation (iOS & Android)
+- 🎨 Beautiful, calming user interface design
+- ♿ Accessibility features and inclusive design
+- 🔒 Complete offline functionality with privacy focus
+- 📖 Comprehensive documentation and contribution guides
 
-### 🎨 Design
-- Soft, soothing color palette
-- Intuitive navigation
+### 🔜 Planned Features
+- 🌙 Dark mode support for nighttime relief
+- 📊 Progress tracking to see your journey to calm
+- 🔔 Gentle reminder notifications for preventive care
+- 🌍 Multi-language support to help people worldwide
+- 🎧 Custom audio upload functionality
+
+### 🎨 Design Principles
+- Soft, soothing color palette optimized for mental health
+- Intuitive navigation with clear user flow
 - Responsive design for all screen sizes
-- Smooth animations and transitions
+- Smooth animations and calming transitions
+- Science-based UI/UX for anxiety relief
 
-### 🔒 Privacy & Security
-- Zero data collection
+### 🔒 Privacy & Security Focus
+- Zero data collection policy
 - Completely offline operation
-- No tracking or analytics
-- Local storage only
+- No tracking, analytics, or external dependencies
+- Local device storage only
+- Open source for complete transparency
 
 ---
 
-## Development Releases
+## 📋 Development Status
 
-### [0.3.0] - Development
-#### Added
-- Taste imagination exercise implementation
-- Improved UI animations
-- Better error handling
+**Current Status**: 🚧 **Active Development**
 
-### [0.2.0] - Development
-#### Added
-- Smell imagination exercise
-- Vibration exercise functionality
-- Sound focus exercise
+This project is currently in active development and has not yet been officially released. We're building a comprehensive mental health tool with the community's help. 
 
-### [0.1.0] - Development
-#### Added
-- Initial project setup
-- Basic breathing exercise
-- Core navigation structure
+### 🎯 Roadmap to v1.0.0
+- [ ] Complete all core exercises implementation
+- [ ] Comprehensive testing across devices
+- [ ] Accessibility compliance verification
+- [ ] Community feedback integration
+- [ ] Documentation finalization
+- [ ] App store preparation and submission
 
 ---
 

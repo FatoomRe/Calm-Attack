@@ -6,26 +6,12 @@ Thank you for considering contributing to **Calm Attack**! Your involvement help
 
 ## 🌟 Table of Contents
 
-- [💙 Code of Conduct](#-code-of-conduct)
-- [🚀 Getting Started](#-getting-started)
+- [ Getting Started](#-getting-started)
 - [🛠️ How to Contribute](#️-how-to-contribute)
 - [📋 Development Guidelines](#-development-guidelines)
 - [📤 Submitting Changes](#-submitting-changes)
 - [🏷️ Issue Guidelines](#️-issue-guidelines)
 - [👥 Community](#-community)
-
----
-
-## 💙 Code of Conduct
-
-This project is a safe space for people dealing with mental health challenges. We are committed to creating a welcoming and inclusive environment for everyone.
-
-### Our Pledge
-- 🤝 Be respectful and kind
-- 🌈 Embrace diversity and inclusion
-- 💙 Show empathy and understanding
-- 🛡️ Respect privacy and mental health considerations
-- 📚 Help each other learn and grow
 
 ---
 
