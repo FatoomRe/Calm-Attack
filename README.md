@@ -71,6 +71,13 @@
 - Helps distract from panic-inducing thoughts
 - Mindful visualization techniques
 
+### 🫧 **Bubble Pop Game**
+*Interactive mindfulness through focused play*
+- Sequential bubble-popping game to engage cognitive focus
+- Numbered bubbles (1-20) with satisfying pop sounds
+- Helps redirect anxious thoughts through concentration
+- Colorful, calming visual design with rewarding feedback
+
 <div align="center">
 
 https://github.com/user-attachments/assets/0bcc22bf-7c62-40f6-ba8c-3c11fd60e897
@@ -129,7 +136,7 @@ https://github.com/user-attachments/assets/0bcc22bf-7c62-40f6-ba8c-3c11fd60e897
 | 🐛 **Found a Bug?** | 💡 **Have an Idea?** | 🎨 **Love Design?** | 📚 **Great at Writing?** |
 |:---:|:---:|:---:|:---:|
 | Help us fix issues | Suggest new features | Improve the UI/UX | Enhance documentation |
-| [Report Here](../../issues) | [Share Ideas](../../issues) | [Design Away](../../issues) | [Write With Us](../../issues) |
+| [Report Here](https://github.com/FatoomRe/Calm-Attack/issues) | [Share Ideas](https://github.com/FatoomRe/Calm-Attack/issues) | [Design Away](https://github.com/FatoomRe/Calm-Attack/issues) | [Write With Us](https://github.com/FatoomRe/Calm-Attack/issues) |
 
 ### 🚀 Quick Start for Contributors
 
@@ -184,7 +191,7 @@ We've created comprehensive documentation to help you get involved:
 - [ ] 📱 **Wearable Integration** - Help on your wrist
 - [ ] 🏥 **Professional Resources** - Connect with help
 
-*Have an idea? [Share it with us!](../../issues)*
+*Have an idea? [Share it with us!](https://github.com/FatoomRe/Calm-Attack/issues)*
 
 ---
 

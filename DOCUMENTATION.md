@@ -73,12 +73,13 @@ Calm-Attack/
 │   │   ├── sound_screen.dart
 │   │   ├── smell_screen.dart
 │   │   ├── taste_screen.dart
+│   │   ├── bubble_pop_game_screen.dart
 │   │   └── finish_screen.dart
 │   ├── Animations/          # Custom animations
 │   └── Buttons/             # Reusable UI components
 ├── assets/                  # Static assets
 │   ├── *.png               # Images and icons
-│   ├── *.mp3               # Audio files
+│   ├── *.mp3               # Audio files (music and pop sounds)
 │   ├── *.riv               # Rive animations
 │   ├── Smell/              # Smell exercise images
 │   └── Taste/              # Taste exercise images
@@ -89,9 +90,10 @@ Calm-Attack/
 
 ### 🔄 App Flow
 1. **Start Screen** → Exercise selection
-2. **Exercise Screens** → Guided techniques
-3. **Finish Screen** → Completion celebration
-4. **Return Loop** → Back to start for repeated use
+2. **Exercise Screens** → Guided techniques (breathing, sound, vibration, smell, taste)
+3. **Bubble Pop Game** → Interactive cognitive engagement (accessible after smell exercise)
+4. **Finish Screen** → Completion celebration
+5. **Return Loop** → Back to start for repeated use
 
 ---
 
@@ -184,6 +186,24 @@ Calm-Attack/
 - Pleasant association building
 
 **Mental Health Basis**: Cognitive distraction and positive association therapy
+
+### 🫧 Bubble Pop Game
+**Purpose**: Interactive cognitive redirection through focused gameplay
+
+**Gameplay**:
+- Sequential bubble popping (numbers 1-20)
+- Colorful gradient bubbles with satisfying pop sounds
+- Non-overlapping bubble placement for clear targeting
+- Immediate audio feedback with random pop sound selection
+
+**Implementation**:
+- Custom bubble painter with gradient effects and highlights
+- Collision detection for proper bubble placement
+- Audio player with multiple pop sound variants
+- Responsive design adapting to different screen sizes
+- Progress tracking through sequential number system
+
+**Mental Health Basis**: Cognitive engagement therapy and mindful distraction techniques
 
 ---
 
