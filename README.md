@@ -169,8 +169,8 @@ We've created comprehensive documentation to help you get involved:
 | 📄 Document | 📋 Description |
 |-------------|----------------|
 | [🤝 Contributing Guide](CONTRIBUTING.md) | Complete guide for new contributors |
-| [� Changelog](CHANGELOG.md) | Development progress and project roadmap |
-| [�📚 Full Documentation](DOCUMENTATION.md) | Comprehensive project documentation |
+| [📝 Changelog](CHANGELOG.md) | Development progress and project roadmap |
+| [📚 Full Documentation](DOCUMENTATION.md) | Comprehensive project documentation |
 
 ---
 
