@@ -1,4 +1,4 @@
-# 🌟 Calm Attack 👾⚔️☁️
+# Calm Attack 👾⚔️☁️
 
 > *Transforming panic into peace, one breath at a time* ✨
 
