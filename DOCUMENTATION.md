@@ -59,7 +59,7 @@ To provide immediate, accessible, and effective panic attack relief through tech
 - **Audio**: AudioPlayers package
 - **Animations**: Rive animations
 - **Haptics**: Vibration package
-- **State Management**: Provider pattern
+- **State Management**: StatefulWidget pattern
 
 ### 🗂️ Project Structure
 ```
@@ -68,11 +68,11 @@ Calm-Attack/
 │   ├── main.dart            # App entry point
 │   ├── Pages/               # Screen widgets
 │   │   ├── start_screen.dart
-│   │   ├── vibration_screen.dart
 │   │   ├── breathing_screen.dart
-│   │   ├── sound_screen.dart
-│   │   ├── smell_screen.dart
+│   │   ├── audio_screen.dart
+│   │   ├── vibration_screen.dart
 │   │   ├── taste_screen.dart
+│   │   ├── smell_screen.dart
 │   │   ├── bubble_pop_game_screen.dart
 │   │   └── finish_screen.dart
 │   ├── Animations/          # Custom animations
@@ -89,11 +89,14 @@ Calm-Attack/
 ```
 
 ### 🔄 App Flow
-1. **Start Screen** → Exercise selection
-2. **Exercise Screens** → Guided techniques (breathing, sound, vibration, smell, taste)
-3. **Bubble Pop Game** → Interactive cognitive engagement (accessible after smell exercise)
-4. **Finish Screen** → Completion celebration
-5. **Return Loop** → Back to start for repeated use
+1. **Start Screen** → Get Started button
+2. **Breathing Screen** → 3-3-3 breathing exercise
+3. **Audio Screen** → Nature sounds and music  
+4. **Vibration Screen** → Haptic feedback exercise
+5. **Taste Screen** → Visual taste imagination
+6. **Smell Screen** → Visual scent imagination  
+7. **Bubble Pop Game** → Interactive cognitive engagement
+8. **Finish Screen** → Session completion and time tracking
 
 ---
 
@@ -102,16 +105,17 @@ Calm-Attack/
 ### 🫁 Breathing Exercise
 **Purpose**: Regulate breathing to activate the parasympathetic nervous system
 
-**Technique**: 4-7-8 Breathing Method
-- Inhale for 4 counts
-- Hold for 7 counts  
-- Exhale for 8 counts
+**Technique**: 3-3-3 Breathing Method
+- Inhale for 3 seconds
+- Hold for 3 seconds  
+- Exhale for 3 seconds
 
 **Implementation**:
 - Visual breathing guide with expanding/contracting animation
-- Audio cues for timing
-- Customizable pace
-- Progress indication
+- Dynamic text display (INHALE, HOLD, EXHALE)
+- Rive animation integration
+- 3-second timing for each phase
+- Phase indicators with visual timing display
 
 **Mental Health Basis**: Proven to reduce anxiety by stimulating the vagus nerve
 
@@ -119,51 +123,53 @@ Calm-Attack/
 **Purpose**: Ground users in the present moment through auditory focus
 
 **Available Sounds**:
-- Nature sounds (rain, ocean, forest)
-- White noise variations
-- Calming instrumental music
-- Ambient soundscapes
+- Waves (Ocean sounds)
+- Rain (Rainfall ambience)
+- Birds (Nature bird sounds)
+- Fire (Crackling fire)
+- Forest (Forest ambience)
+- Wind (Wind sounds)
 
 **Implementation**:
-- High-quality audio files
-- Loop functionality
-- Volume control
-- Background play capability
+- 6 high-quality audio tracks (music-1.mp3 to music-6.mp3)
+- Play/pause controls
+- Track selection with visual feedback
+- Audio spectrum visualization animation
+- Automatic audio cleanup on screen navigation
 
 **Mental Health Basis**: Based on mindfulness and grounding techniques used in CBT
 
 ### 📳 Vibration Focus Exercise
 **Purpose**: Physical grounding through haptic feedback
 
-**Patterns**:
-- Gentle rhythmic pulses
-- Breathing-synchronized vibrations
-- Progressive intensity patterns
-- Custom timing options
+**Features**:
+- Start/Stop vibration controls
+- Continuous vibration pattern for grounding
+- Visual Rive animation accompaniment
+- Device vibration capability detection
 
 **Implementation**:
 - Platform-specific vibration APIs
+- Simple on/off vibration control
+- Rive animation integration (vibrationAni.riv)
 - Battery-conscious usage
 - Accessibility considerations
-- Device capability detection
 
 **Mental Health Basis**: Somatic experiencing and body-based anxiety relief
 
 ### 🌸 Smell Imagination Exercise
 **Purpose**: Engage olfactory memory for calming visualization
 
-**Scenarios**:
-- Lavender fields
-- Ocean breeze
-- Fresh baked goods
-- Pine forest
-- Coffee shop
-- Garden flowers
+**Visual Elements**:
+- Beautiful flower and nature imagery (F1.png - F8.png)
+- Aesthetically pleasing visual arrangements
+- Calming color palettes
+- Multiple visual prompts for imagination
 
 **Implementation**:
-- High-quality imagery
-- Guided visualization scripts
-- Progressive relaxation
+- High-quality imagery positioned across the screen
+- Responsive design adapting to different screen sizes
+- Visual-based imagination prompts
 - Customizable duration
 
 **Mental Health Basis**: Olfactory system's direct connection to limbic system
@@ -171,19 +177,17 @@ Calm-Attack/
 ### 🍃 Taste Imagination Exercise
 **Purpose**: Distraction through detailed sensory imagination
 
-**Food Categories**:
-- Comfort foods
-- Tropical fruits
-- Desserts
-- Beverages
-- Cultural cuisines
-- Childhood favorites
+**Visual Elements**:
+- Sweet treats and desserts (cupcake, doughnut, pancake)
+- Refreshing beverages (milkshake, ice cream)
+- Fresh fruits (pineapple)
+- Appetizing food imagery
 
 **Implementation**:
-- Appetizing imagery
-- Detailed description prompts
-- Multi-sensory engagement
-- Pleasant association building
+- Appetizing imagery positioned throughout the interface
+- Visual prompts for taste imagination
+- Multi-sensory engagement through appealing visuals
+- Pleasant association building through food imagery
 
 **Mental Health Basis**: Cognitive distraction and positive association therapy
 
@@ -199,9 +203,10 @@ Calm-Attack/
 **Implementation**:
 - Custom bubble painter with gradient effects and highlights
 - Collision detection for proper bubble placement
-- Audio player with multiple pop sound variants
+- Audio player with multiple pop sound variants (pop1.mp3, pop2.mp3, pop3.mp3)
 - Responsive design adapting to different screen sizes
 - Progress tracking through sequential number system
+- Note: Currently resets session time when navigating to finish screen
 
 **Mental Health Basis**: Cognitive engagement therapy and mindful distraction techniques
 
@@ -251,7 +256,7 @@ flutter test
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^6.1.2          # State management
+  provider: ^6.1.2          # State management (currently unused)
   audioplayers: ^6.0.0      # Audio playback
   rive: ^0.13.20            # Animations
   vibration: ^3.1.3         # Haptic feedback
@@ -261,6 +266,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0     # Code quality
+  flutter_launcher_icons: ^0.13.1  # App icon generation
 ```
 
 ### 🔄 CI/CD Pipeline
@@ -390,7 +396,7 @@ dev_dependencies:
 
 ### 🧠 Mental Health Research
 - [Grounding Techniques in CBT](https://example.com)
-- [4-7-8 Breathing Research](https://example.com)
+- [3-3-3 Breathing Research](https://example.com)
 - [Mindfulness for Anxiety](https://example.com)
 - [Panic Attack Management](https://example.com)
 

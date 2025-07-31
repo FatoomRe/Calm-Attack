@@ -2,7 +2,7 @@
 
 > *Transforming panic into peace, one breath at a time* ✨
 
-**Calm Attack** is an open-source Flutter-based mobile application designed to be a lifeline for individuals experiencing **Panic Attacks**. Born from empathy and built with love by the community, this app offers scientifically-backed grounding exercises to help you regain control when anxiety strikes.
+**Calm Attack** is an open-source Flutter-based mobile application designed to be a lifeline for individuals experiencing **Panic Attacks**. Empowering you to reclaim your strength and find peace in the storm, this app offers scientifically-backed grounding exercises to help you regain control when anxiety strikes.
 
 <div align="center">
 
@@ -21,7 +21,7 @@
 - **🧠 Science-Based**: Grounding techniques proven by mental health professionals  
 - **📱 Always Available**: Your pocket therapist, ready 24/7
 - **🔒 Privacy First**: Everything stays on your device—completely offline
-- **👥 Community Driven**: Built by people who understand the struggle
+- **🎯 Personal Experience**: Built by someone who truly understands the need
 - **💝 100% Free**: Open source means accessible to everyone, forever
 
 ---
@@ -45,29 +45,33 @@
 *Find your rhythm, find your calm*
 - Guided breathing exercises to help regulate breathing and reduce anxiety
 - Visual breathing guide with smooth animations
-- Scientifically-proven 4-7-8 technique
+- Simple 3-3-3 breathing pattern (Inhale 3 sec, Hold 3 sec, Exhale 3 sec)
 
 ### 🎵 **Sound Focus Exercise** 
 *Ground yourself in the present moment*
-- Encourages users to focus on specific sounds to ground themselves
-- Multiple calming audio environments
+- 6 nature and ambient sound tracks (Waves, Rain, Birds, Fire, Forest, Wind)
+- Audio player with play/pause controls
+- Visual audio spectrum animation
 - Helps anchor your mind in the present
 
 ### 📳 **Vibration Focus Exercise**
 *Feel your way back to stability*
-- Uses gentle vibrations to help users become more aware of their physical sensations
-- Haptic feedback to reconnect with your body
-- Customizable patterns for grounding
+- Simple start/stop vibration controls
+- Continuous haptic feedback for grounding
+- Rive animation accompaniment
+- Helps reconnect with your body
 
 ### 🌸 **Smell Imagination Exercise**
 *Transport yourself to tranquility*
-- Guides users to imagine calming scents to help them relax and reduce stress
-- Beautiful imagery to enhance the visualization experience
-- Multiple scent scenarios for variety
+- Beautiful flower and nature imagery (8 different images)
+- Visual prompts for scent imagination
+- Calming visual arrangements
+- Engages olfactory memory
 
 ### 🍃 **Taste Imagination Exercise**
 *Savor the moment, find your peace*
-- Challenges users to imagine and visualize specific taste scenarios
+- Appetizing food imagery (cupcake, doughnut, pancake, milkshake, ice cream, pineapple)
+- Visual prompts for taste imagination
 - Helps distract from panic-inducing thoughts
 - Mindful visualization techniques
 
@@ -207,7 +211,7 @@ This project is licensed under the [Creative Commons Zero v1.0 Universal License
 
 ### 👩‍💻 Meet the Creator
 
-**Fatimah AlAbbas** - *Turning personal struggles into solutions for all*
+**Fatimah AlAbbas** - *Building with compassion, coding with care*
 
 [![Twitter](https://img.shields.io/badge/Twitter-@FatoomRe-1DA1F2?style=for-the-badge&logo=twitter)](https://x.com/FatoomRe)
 [![Email](https://img.shields.io/badge/Email-FatimahAlabbas1@outlook.sa-EA4335?style=for-the-badge&logo=gmail)](mailto:FatimahAlabbas1@outlook.sa)

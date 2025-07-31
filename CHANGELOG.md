@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - In Development 🚧
 
-### � Currently Working On
-- 🫁 **Breathing Exercise** - Guided breathing with visual cues and 4-7-8 technique
+### ✨ Currently Working On
+- 🫁 **Breathing Exercise** - Guided breathing with visual cues and 3-3-3 technique
 - 🎵 **Sound Focus Exercise** - Calming audio environments for grounding
 - 📳 **Vibration Focus Exercise** - Haptic feedback for physical grounding
 - 🌸 **Smell Imagination Exercise** - Guided scent visualization with beautiful imagery

@@ -185,7 +185,7 @@ git add .
 # Commit with a clear message
 git commit -m "Add: New breathing exercise with custom timing
 
-- Implements 4-7-8 breathing technique
+- Implements 3-3-3 breathing technique
 - Adds visual breathing guide
 - Includes customizable timing options
 - Fixes #123"
