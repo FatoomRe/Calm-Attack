@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "C:/Users/hamuo/FlutterApps/calmattack/build/windows/x64/_deps/nuget-subbuild"
+    "cmake.sourceDirectory": "C:/Users/hamuo/FlutterApps/calmattack/build/windows/x64/_deps/nuget-subbuild",
+    "cSpell.words": [
+        "calmattack"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
