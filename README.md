@@ -10,7 +10,7 @@
 
 [![Flutter](https://img.shields.io/badge/Flutter-Framework-blue?logo=flutter)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-Language-blue?logo=dart)](https://dart.dev)
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 </div>
@@ -199,7 +199,7 @@ We've created comprehensive documentation to help you get involved:
 
 ## 📄 License
 
-This project is licensed under the [Creative Commons Zero v1.0 Universal License](LICENSE). 
+This project is licensed under the [MIT License](LICENSE). 
 
 **Translation:** You can use, modify, and distribute this freely. Because healing should be accessible to everyone, everywhere. 💙
 
