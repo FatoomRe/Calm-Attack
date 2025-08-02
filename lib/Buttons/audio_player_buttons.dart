@@ -70,7 +70,7 @@ class _AudioPlayerButtonsState extends State<AudioPlayerButtons> {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
+            color: Colors.grey.withValues(alpha: 0.7),
             spreadRadius: 0.1,
             blurRadius: 1,
             offset: const Offset(0, 3), // Shadow position

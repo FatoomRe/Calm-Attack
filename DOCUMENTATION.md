@@ -65,7 +65,7 @@ To provide immediate, accessible, and effective panic attack relief through tech
 ```
 Calm-Attack/
 ├── lib/                      # Main application code
-│   ├── main.dart            # App entry point
+│   ├── main.dart            # App entry point with theming
 │   ├── Pages/               # Screen widgets
 │   │   ├── start_screen.dart
 │   │   ├── breathing_screen.dart
@@ -75,8 +75,17 @@ Calm-Attack/
 │   │   ├── smell_screen.dart
 │   │   ├── bubble_pop_game_screen.dart
 │   │   └── finish_screen.dart
+│   ├── core/                # Core architecture (NEW!)
+│   │   ├── constants/       # App-wide constants
+│   │   │   └── app_constants.dart
+│   │   ├── utils/           # Utility functions
+│   │   │   ├── audio_utils.dart
+│   │   │   ├── navigation_utils.dart
+│   │   │   └── session_utils.dart
+│   │   └── widgets/         # Reusable UI components
+│   │       └── common_widgets.dart
 │   ├── Animations/          # Custom animations
-│   └── Buttons/             # Reusable UI components
+│   └── Buttons/             # Legacy UI components
 ├── assets/                  # Static assets
 │   ├── *.png               # Images and icons
 │   ├── *.mp3               # Audio files (music and pop sounds)
@@ -97,6 +106,23 @@ Calm-Attack/
 6. **Smell Screen** → Visual scent imagination  
 7. **Bubble Pop Game** → Interactive cognitive engagement
 8. **Finish Screen** → Session completion and time tracking
+
+### 🏗️ Architecture Improvements (2025 Refactor)
+
+The codebase underwent major refactoring to improve maintainability and contributor experience:
+
+#### 🎯 **Core Architecture**
+- **Constants System**: Centralized colors, text styles, sizes, and asset paths
+- **Utility Functions**: Reusable functions for audio, navigation, and session management
+- **Common Widgets**: Standardized UI components for consistent design
+- **Better Error Handling**: Robust disposal patterns and lifecycle management
+
+#### 🔧 **Key Improvements**
+- **Consistent Layout**: All screens now follow the same responsive design pattern
+- **Centralized Theming**: Material 3 theming with consistent colors and typography
+- **Asset Management**: Organized asset declarations with proper error handling
+- **Code Organization**: Modular structure makes it easier for contributors
+- **Documentation**: Comprehensive inline documentation for all components
 
 ---
 

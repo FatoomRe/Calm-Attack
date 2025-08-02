@@ -1,114 +1,75 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+/// Audio screen for the Calm Attack application.
+///
+/// This screen provides a sound therapy experience with nature and ambient
+/// sounds to help users focus their attention and achieve a calmer mental state.
+/// Features multiple audio tracks with visual spectrum animation.
 
+import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+
 import '../Animations/audio_spectrum_lines.dart';
 import '../Buttons/audio_player_buttons.dart';
-import '../Pages/finish_screen.dart';
-import '../Pages/vibration_screen.dart';
-import 'package:flutter/material.dart';
+import 'finish_screen.dart';
+import 'vibration_screen.dart';
+import '../core/constants/app_constants.dart';
+import '../core/widgets/common_widgets.dart';
+import '../core/utils/navigation_utils.dart';
+import '../core/utils/audio_utils.dart';
 
+/// The audio screen widget providing sound therapy features.
+///
+/// This screen displays:
+/// - Dynamic sound name with gradient text effect
+/// - Audio spectrum visualization animation
+/// - Audio player controls for play/pause and track selection
+/// - Navigation buttons for Next/Finish
 class AudioScreen extends StatefulWidget {
+  /// The start time of the current session for tracking purposes
   final DateTime startTime;
+
   const AudioScreen({super.key, required this.startTime});
 
   @override
-  _AudioScreenState createState() => _AudioScreenState();
+  State<AudioScreen> createState() => _AudioScreenState();
 }
 
 class _AudioScreenState extends State<AudioScreen> {
-  int currentSoundIndex = 0; // Index to track the currently playing sound.
-  final AudioPlayer player = AudioPlayer();
-  bool isPlaying = false; // Track play/pause state.
+  /// Index to track the currently playing sound
+  int _currentSoundIndex = 0;
 
-  final List<String> soundTexts = [
-    'Waves',
-    'Rain',
-    'Birds',
-    'Fire',
-    'Forest',
-    'Wind'
-  ]; // List of descriptive texts for each sound.
+  /// Audio player instance for managing playback
+  final AudioPlayer _audioPlayer = AudioPlayer();
 
-  final List<String> sounds = [
-    'assets/music-1.mp3',
-    'assets/music-2.mp3',
-    'assets/music-3.mp3',
-    'assets/music-4.mp3',
-    'assets/music-5.mp3',
-    'assets/music-6.mp3',
-  ]; // List of sound file paths.
+  /// Track play/pause state for UI updates
+  bool _isPlaying = false;
+
+  @override
+  void dispose() {
+    AudioUtils.disposeAudioPlayer(_audioPlayer);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final Shader linearGradient = const LinearGradient(
-      colors: <Color>[Color(0xff3E3BD4), Color(0xff1AAC9B)],
-      stops: [0.1, 0.40],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
-
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.background,
       body: Center(
         child: Padding(
           padding: EdgeInsets.only(top: screenHeight * 0.15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Text(
-                'Focus on',
-                style: TextStyle(
-                  color: Color(0xff0F073E),
-                  fontSize: 33,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              ShaderMask(
-                shaderCallback: (bounds) => linearGradient,
-                child: Text(
-                  soundTexts[currentSoundIndex],
-                  style: const TextStyle(
-                    fontSize: 33,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              _buildHeader(),
+              _buildCurrentSoundTitle(),
               SizedBox(height: screenHeight * 0.03),
-              buildAudioSpectrumContainer(screenWidth, screenHeight),
+              _buildAudioSpectrumContainer(screenWidth, screenHeight),
               SizedBox(height: screenHeight * 0.06),
-              AudioPlayerButtons(
-                player: player,
-                onSoundIndexChanged: (index) {
-                  setState(() {
-                    currentSoundIndex = index;
-                  });
-                },
-                onPlayPauseChanged: (playing) {
-                  setState(() {
-                    isPlaying = playing; // Update play/pause state
-                  });
-                },
-              ),
+              _buildAudioPlayerButtons(),
               SizedBox(height: screenHeight * 0.04),
-              buildNextButton(context, screenWidth),
-              TextButton(
-                onPressed: () async {
-                  await player.stop();
-                  if (!mounted) return;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          FinishScreen(startTime: widget.startTime),
-                    ),
-                  );
-                },
-                child: const Text('Finish Session'),
-              ),
+              _buildNavigationButtons(context, screenWidth),
             ],
           ),
         ),
@@ -116,9 +77,36 @@ class _AudioScreenState extends State<AudioScreen> {
     );
   }
 
-  // Function to build the audio spectrum container.
-  Container buildAudioSpectrumContainer(
-      double screenWidth, double screenHeight) {
+  /// Builds the main header text.
+  Widget _buildHeader() {
+    return const Text(
+      'Focus on',
+      style: AppTextStyles.heading2,
+    );
+  }
+
+  /// Builds the current sound title with gradient effect.
+  Widget _buildCurrentSoundTitle() {
+    final Shader linearGradient = const LinearGradient(
+      colors: [AppColors.accentBlue, AppColors.accentTeal],
+      stops: [0.1, 0.40],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+
+    return ShaderMask(
+      shaderCallback: (bounds) => linearGradient,
+      child: Text(
+        AppAudio.musicLabels[_currentSoundIndex],
+        style: AppTextStyles.heading2.copyWith(
+          color: AppColors.textOnPrimary,
+        ),
+      ),
+    );
+  }
+
+  /// Builds the audio spectrum animation container.
+  Widget _buildAudioSpectrumContainer(double screenWidth, double screenHeight) {
     return Container(
       width: screenWidth * 0.7,
       height: screenHeight * 0.4,
@@ -133,7 +121,7 @@ class _AudioScreenState extends State<AudioScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
+            color: Colors.grey.withValues(alpha: 0.7),
             spreadRadius: 0.1,
             blurRadius: 1,
             offset: const Offset(0, 3),
@@ -141,42 +129,74 @@ class _AudioScreenState extends State<AudioScreen> {
         ],
       ),
       child: Center(
-        child:
-            AudioSpectrumLines(isPlaying: isPlaying), // Pass play/pause state
+        child: AudioSpectrumLines(isPlaying: _isPlaying),
       ),
     );
   }
 
-  // Function to build the 'Next' button.
-  SizedBox buildNextButton(BuildContext context, double screenWidth) {
-    return SizedBox(
-      height: 50,
-      width: screenWidth * 0.45,
-      child: ElevatedButton(
-        onPressed: () async {
-          await player.stop();
-          if (!mounted) return;
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  VibrationScreen(startTime: widget.startTime),
-            ),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xff0F073E),
-          elevation: 9,
-        ),
-        child: const Text(
-          'Next',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+  /// Builds the audio player control buttons.
+  Widget _buildAudioPlayerButtons() {
+    return AudioPlayerButtons(
+      player: _audioPlayer,
+      onSoundIndexChanged: _handleSoundIndexChanged,
+      onPlayPauseChanged: _handlePlayPauseChanged,
     );
+  }
+
+  /// Builds the navigation buttons section.
+  Widget _buildNavigationButtons(BuildContext context, double screenWidth) {
+    return Column(
+      children: [
+        AppElevatedButton(
+          text: 'Next',
+          widthRatio: AppSizes.buttonWidthRatio,
+          onPressed: () => _navigateToVibrationScreen(),
+        ),
+        AppTextButton(
+          text: 'Finish Session',
+          onPressed: () => _navigateToFinishScreen(),
+        ),
+      ],
+    );
+  }
+
+  /// Handles sound index changes from the audio player buttons.
+  void _handleSoundIndexChanged(int index) {
+    setState(() {
+      _currentSoundIndex = index;
+    });
+  }
+
+  /// Handles play/pause state changes from the audio player buttons.
+  void _handlePlayPauseChanged(bool playing) {
+    setState(() {
+      _isPlaying = playing;
+    });
+  }
+
+  /// Navigates to the vibration screen.
+  void _navigateToVibrationScreen() {
+    _stopAudioAndNavigate(() {
+      NavigationUtils.navigateToScreen(
+        context,
+        VibrationScreen(startTime: widget.startTime),
+      );
+    });
+  }
+
+  /// Navigates to the finish screen.
+  void _navigateToFinishScreen() {
+    _stopAudioAndNavigate(() {
+      NavigationUtils.navigateToScreen(
+        context,
+        FinishScreen(startTime: widget.startTime),
+      );
+    });
+  }
+
+  /// Stops audio playback before navigation.
+  void _stopAudioAndNavigate(VoidCallback navigationCallback) async {
+    await AudioUtils.stopAudio(_audioPlayer);
+    navigationCallback();
   }
 }

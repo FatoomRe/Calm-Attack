@@ -1,147 +1,134 @@
-// ignore_for_file: library_private_types_in_public_api, sized_box_for_whitespace
+/// Vibration screen for the Calm Attack application.
+///
+/// This screen provides a tactile grounding exercise using device vibration
+/// combined with visual animation to help users focus their attention
+/// and achieve a calmer mental state.
 
-import 'package:calmattack/Pages/finish_screen.dart';
-import 'package:calmattack/Pages/taste_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:vibration/vibration.dart';
 
+import 'finish_screen.dart';
+import 'taste_screen.dart';
+import '../core/constants/app_constants.dart';
+import '../core/widgets/common_widgets.dart';
+import '../core/utils/navigation_utils.dart';
+
+/// The vibration screen widget providing tactile grounding exercise.
+///
+/// This screen displays:
+/// - Instructional header text
+/// - Animated Rive animation synchronized with vibration
+/// - Play/pause control for vibration
+/// - Navigation buttons for Next/Finish
 class VibrationScreen extends StatefulWidget {
+  /// The start time of the current session for tracking purposes
   final DateTime startTime;
+
   const VibrationScreen({super.key, required this.startTime});
 
   @override
-  _VibrationScreenState createState() => _VibrationScreenState();
+  State<VibrationScreen> createState() => _VibrationScreenState();
 }
 
 class _VibrationScreenState extends State<VibrationScreen> {
-  bool _vibrating = false; // Tracks whether vibration is active
-  late RiveAnimationController _riveController; // Controller for Rive animation
+  /// Tracks whether vibration is currently active
+  bool _isVibrating = false;
+
+  /// Controller for the Rive animation
+  late RiveAnimationController _riveController;
 
   @override
   void initState() {
     super.initState();
-    _riveController = SimpleAnimation('wave'); // Initialize Rive animation controller
-    startVibration(); // Start vibration when the screen initializes
+    _initializeAnimation();
+    _startVibration();
   }
 
-  // Function to start vibration in a loop with a specific pattern
-  void startVibration() async {
+  @override
+  void dispose() {
+    // Cancel vibration and cleanup without setState
+    _isVibrating = false;
+    _riveController.isActive = false;
+    Vibration.cancel();
+    super.dispose();
+  }
+
+  /// Initializes the Rive animation controller.
+  void _initializeAnimation() {
+    _riveController = SimpleAnimation('wave');
+  }
+
+  /// Starts the vibration pattern and animation.
+  void _startVibration() async {
+    if (!mounted) return;
+
     setState(() {
-      _vibrating = true;
-      _riveController.isActive = true; // Activate the Rive animation
+      _isVibrating = true;
+      _riveController.isActive = true;
     });
 
-    // Loop to keep vibrating as long as _vibrating is true
-    while (_vibrating) {
-      if (await Vibration.hasCustomVibrationsSupport() ?? false) {
-        Vibration.vibrate(pattern: [500, 500]); // Vibrate for 500ms and pause for 500ms
-      } else {
-        Vibration.vibrate(duration: 500); // Fallback for devices without custom vibration support
+    await _vibrationLoop();
+  }
+
+  /// Runs the vibration loop while vibration is enabled.
+  Future<void> _vibrationLoop() async {
+    while (_isVibrating && mounted) {
+      try {
+        final hasCustomSupport = await Vibration.hasCustomVibrationsSupport();
+        if (hasCustomSupport == true) {
+          Vibration.vibrate(pattern: [500, 500]);
+        } else {
+          Vibration.vibrate(duration: 500);
+        }
+        await Future.delayed(const Duration(seconds: 3));
+      } catch (e) {
+        // Handle vibration errors gracefully
+        break;
       }
-      await Future.delayed(const Duration(seconds: 3)); // Delay for 3 seconds
     }
   }
 
-  // Function to stop the vibration and animation
-  void stopVibration() {
+  /// Stops the vibration and animation.
+  void _stopVibration() {
+    if (!mounted) return;
+
     setState(() {
-      _vibrating = false;
-      _riveController.isActive = false; // Deactivate the Rive animation
+      _isVibrating = false;
+      _riveController.isActive = false;
     });
-    Vibration.cancel(); // Cancel any ongoing vibration
+    Vibration.cancel();
+  }
+
+  /// Toggles vibration on/off.
+  void _toggleVibration() {
+    if (_isVibrating) {
+      _stopVibration();
+    } else {
+      _startVibration();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: AppSizes.mediumPadding),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start, // Adjust alignment
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(height: 55), // Add extra space at the top
-                const Text(
-                  'Focus on',
-                  style: TextStyle(
-                    color: Color(0xff0F073E),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const Text(
-                  'The Vibration',
-                  style: TextStyle(
-                    color: Color(0xff0F073E),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 50),
-                SizedBox(
-                  width: 300,
-                  height: 300,
-                  child: RiveAnimation.asset(
-                    'assets/vibrationAni.riv',
-                    controllers: [_riveController], // Attach the controller
-                  ),
-                ),
-                const SizedBox(height: 20),
-                // Button to start/stop vibration and animation
-                IconButton(
-                  onPressed: _vibrating ? stopVibration : startVibration,
-                  icon: Icon(
-                    _vibrating ? Icons.pause : Icons.play_arrow_rounded,
-                    size: 50,
-                    color: Colors.red,
-                  ),
-                ),
-                const SizedBox(height: 36),
-                Container(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      stopVibration();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              TasteScreen(startTime: widget.startTime),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff0F073E),
-                      elevation: 9,
-                    ),
-                    child: const Text(
-                      'Next',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    stopVibration();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            FinishScreen(startTime: widget.startTime),
-                      ),
-                    );
-                  },
-                  child: const Text('Finish Session'),
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                _buildHeader(),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+                _buildVibrationAnimation(),
+                const SizedBox(height: AppSizes.mediumPadding),
+                _buildPlayPauseButton(),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                _buildNavigationButtons(context),
               ],
             ),
           ),
@@ -150,9 +137,80 @@ class _VibrationScreenState extends State<VibrationScreen> {
     );
   }
 
-  @override
-  void dispose() {
-    stopVibration(); // Ensure vibration and animation stop when the screen is disposed
-    super.dispose();
+  /// Builds the header text section.
+  Widget _buildHeader() {
+    return Column(
+      children: [
+        Text(
+          'Focus on',
+          style: AppTextStyles.heading3,
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          'The Vibration',
+          style: AppTextStyles.heading3,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
+  /// Builds the vibration animation container.
+  Widget _buildVibrationAnimation() {
+    return SizedBox(
+      width: 300,
+      height: 300,
+      child: RiveAnimation.asset(
+        'assets/vibrationAni.riv',
+        controllers: [_riveController],
+      ),
+    );
+  }
+
+  /// Builds the play/pause button for vibration control.
+  Widget _buildPlayPauseButton() {
+    return IconButton(
+      onPressed: _toggleVibration,
+      icon: Icon(
+        _isVibrating ? Icons.pause : Icons.play_arrow_rounded,
+        size: 50,
+        color: AppColors.accentBlue,
+      ),
+    );
+  }
+
+  /// Builds the navigation buttons section.
+  Widget _buildNavigationButtons(BuildContext context) {
+    return Column(
+      children: [
+        AppElevatedButton(
+          text: 'Next',
+          widthRatio: AppSizes.buttonWidthRatio,
+          onPressed: () => _navigateToTasteScreen(),
+        ),
+        AppTextButton(
+          text: 'Finish Session',
+          onPressed: () => _navigateToFinishScreen(),
+        ),
+      ],
+    );
+  }
+
+  /// Navigates to the taste screen.
+  void _navigateToTasteScreen() {
+    _stopVibration();
+    NavigationUtils.navigateToScreen(
+      context,
+      TasteScreen(startTime: widget.startTime),
+    );
+  }
+
+  /// Navigates to the finish screen.
+  void _navigateToFinishScreen() {
+    _stopVibration();
+    NavigationUtils.navigateToScreen(
+      context,
+      FinishScreen(startTime: widget.startTime),
+    );
   }
 }

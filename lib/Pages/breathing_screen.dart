@@ -1,12 +1,29 @@
-// ignore_for_file: sized_box_for_whitespace
+/// Breathing exercise screen for the Calm Attack application.
+///
+/// This screen provides a guided breathing exercise to help users
+/// manage panic attacks through controlled breathing patterns.
+/// Features a visual breathing animation and clear phase indicators.
 
-import 'package:calmattack/Animations/breathing_cloud.dart';
-import 'package:calmattack/Pages/audio_screen.dart';
-import 'package:calmattack/Pages/finish_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../Animations/breathing_cloud.dart';
+import 'audio_screen.dart';
+import 'finish_screen.dart';
+import '../core/constants/app_constants.dart';
+import '../core/widgets/common_widgets.dart';
+import '../core/utils/navigation_utils.dart';
+
+/// The breathing exercise screen widget.
+///
+/// This screen displays:
+/// - Breathing phase indicators (Inhale, Hold, Exhale)
+/// - Current breathing instruction text
+/// - Animated breathing cloud
+/// - Navigation buttons for Next/Finish
 class BreathingScreen extends StatefulWidget {
+  /// The start time of the current session for tracking purposes
   final DateTime startTime;
+
   const BreathingScreen({super.key, required this.startTime});
 
   @override
@@ -14,13 +31,16 @@ class BreathingScreen extends StatefulWidget {
 }
 
 class _BreathingScreenState extends State<BreathingScreen> {
-  // Variable to hold the current breathing phase text.
-  String _breathingText = 'INHALE';
+  /// Current breathing phase text displayed to the user
+  String _breathingText = BreathingConstants.inhalePhase;
 
-  // Function to update the breathing text.
+  /// Updates the breathing text based on the current animation phase.
+  ///
+  /// This callback is called by the breathing animation to update
+  /// the displayed instruction text.
   void _updateBreathingText(String text) {
     setState(() {
-      _breathingText = text; // Updating the breathing text with the new value.
+      _breathingText = text;
     });
   }
 
@@ -32,22 +52,28 @@ class _BreathingScreenState extends State<BreathingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 20),
-            const BreathingPhases(), // Widget to display the breathing phases.
-            const SizedBox(height: 10),
+            const SizedBox(height: AppSizes.spacingMedium),
+
+            // Breathing phase indicators
+            const _BreathingPhases(),
+
+            const SizedBox(height: AppSizes.spacingSmall),
+
+            // Current breathing instruction
             Text(
-              _breathingText, // Displaying the current breathing phase text.
-              style: const TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
+              _breathingText,
+              style: AppTextStyles.bodyLarge,
             ),
+
             SizedBox(height: screenSize.height * 0.2),
-            // Custom animation widget with callback to update text.
+
+            // Animated breathing cloud with callback
             BreathingCloud(callback: _updateBreathingText),
+
             SizedBox(height: screenSize.height * 0.3),
-            // Widget to display navigation buttons.
-            NavigationButtons(startTime: widget.startTime),
+
+            // Navigation buttons
+            _NavigationButtons(startTime: widget.startTime),
           ],
         ),
       ),
@@ -55,9 +81,15 @@ class _BreathingScreenState extends State<BreathingScreen> {
   }
 }
 
-// Stateless widget to display each breathing phase
-class BreathingPhases extends StatelessWidget {
-  const BreathingPhases({super.key});
+/// Widget to display the three breathing phases with their durations.
+///
+/// Shows a horizontal layout with:
+/// - Inhale (3 seconds)
+/// - Hold (3 seconds)
+/// - Exhale (3 seconds)
+/// Each phase is separated by vertical dividers.
+class _BreathingPhases extends StatelessWidget {
+  const _BreathingPhases();
 
   @override
   Widget build(BuildContext context) {
@@ -67,33 +99,23 @@ class BreathingPhases extends StatelessWidget {
         child: const Row(
           children: [
             Expanded(
-              child: BreathingPhaseWidget(
-                duration: '3',
-                phase: 'INHALE',
+              child: _BreathingPhaseWidget(
+                duration: '${BreathingConstants.inhaleSeconds}',
+                phase: BreathingConstants.inhalePhase,
               ),
             ),
-            VerticalDivider(
-              color: Colors.black,
-              thickness: 2.5,
-              indent: 26,
-              endIndent: 15,
-            ),
+            _VerticalDivider(),
             Expanded(
-              child: BreathingPhaseWidget(
-                duration: '3',
-                phase: 'HOLD',
+              child: _BreathingPhaseWidget(
+                duration: '${BreathingConstants.holdSeconds}',
+                phase: BreathingConstants.holdPhase,
               ),
             ),
-            VerticalDivider(
-              color: Colors.black,
-              thickness: 2.5,
-              indent: 26,
-              endIndent: 15,
-            ),
+            _VerticalDivider(),
             Expanded(
-              child: BreathingPhaseWidget(
-                duration: '3',
-                phase: 'EXHALE',
+              child: _BreathingPhaseWidget(
+                duration: '${BreathingConstants.exhaleSeconds}',
+                phase: BreathingConstants.exhalePhase,
               ),
             ),
           ],
@@ -103,13 +125,17 @@ class BreathingPhases extends StatelessWidget {
   }
 }
 
-// Stateless widget to display each breathing phase.
-class BreathingPhaseWidget extends StatelessWidget {
+/// Individual breathing phase display widget.
+///
+/// Shows the duration and phase name in a consistent format.
+class _BreathingPhaseWidget extends StatelessWidget {
+  /// Duration in seconds for this phase
   final String duration;
+
+  /// Name of the breathing phase (INHALE, HOLD, EXHALE)
   final String phase;
 
-  const BreathingPhaseWidget({
-    super.key,
+  const _BreathingPhaseWidget({
     required this.duration,
     required this.phase,
   });
@@ -121,74 +147,80 @@ class BreathingPhaseWidget extends StatelessWidget {
       children: [
         Text(
           duration,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppTextStyles.bodyMedium,
         ),
         const Text(
           'Seconds',
-          style: TextStyle(
-            fontSize: 10,
-          ),
+          style: TextStyle(fontSize: 10),
         ),
         Text(
           phase,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppTextStyles.bodySmall,
         ),
       ],
     );
   }
 }
 
-// Stateless widget to display navigation buttons.
-class NavigationButtons extends StatelessWidget {
+/// Vertical divider for separating breathing phases.
+class _VerticalDivider extends StatelessWidget {
+  const _VerticalDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return const VerticalDivider(
+      color: AppColors.textPrimary,
+      thickness: 2.5,
+      indent: 26,
+      endIndent: 15,
+    );
+  }
+}
+
+/// Navigation buttons for moving to next screen or finishing session.
+///
+/// Provides:
+/// - Next button to continue to audio screen
+/// - Finish Session button to end the session early
+class _NavigationButtons extends StatelessWidget {
+  /// The start time of the current session
   final DateTime startTime;
-  const NavigationButtons({super.key, required this.startTime, });
+
+  const _NavigationButtons({required this.startTime});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 50,
-          width: MediaQuery.of(context).size.width * 0.45, // Responsive width
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  AudioScreen(startTime: startTime)),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xff0F073E),
-              elevation: 9,
-            ),
-            child: const Text(
-              'Next',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+        // Next button
+        AppElevatedButton(
+          text: 'Next',
+          widthRatio: AppSizes.buttonWidthRatio,
+          onPressed: () => _navigateToAudioScreen(context),
         ),
-        TextButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => FinishScreen(startTime: startTime),
-              ),
-            );
-          },
-          child: const Text('Finish Session'),
+
+        // Finish Session button
+        AppTextButton(
+          text: 'Finish Session',
+          onPressed: () => _navigateToFinishScreen(context),
         ),
       ],
+    );
+  }
+
+  /// Navigates to the audio screen.
+  void _navigateToAudioScreen(BuildContext context) {
+    NavigationUtils.navigateToScreen(
+      context,
+      AudioScreen(startTime: startTime),
+    );
+  }
+
+  /// Navigates to the finish screen.
+  void _navigateToFinishScreen(BuildContext context) {
+    NavigationUtils.navigateToScreen(
+      context,
+      FinishScreen(startTime: startTime),
     );
   }
 }

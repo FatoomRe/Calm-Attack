@@ -103,19 +103,35 @@ Have an idea for a new grounding technique or feature?
 
 ```
 lib/
-├── main.dart                 # App entry point
+├── main.dart                 # App entry point with theming
 ├── Pages/                    # Screen widgets
 │   ├── start_screen.dart
+│   ├── breathing_screen.dart
+│   ├── audio_screen.dart
 │   ├── vibration_screen.dart
-│   └── ...
+│   ├── taste_screen.dart
+│   ├── smell_screen.dart
+│   ├── bubble_pop_game_screen.dart
+│   └── finish_screen.dart
+├── core/                     # Core architecture (NEW!)
+│   ├── constants/            # App-wide constants
+│   │   └── app_constants.dart
+│   ├── utils/                # Utility functions
+│   │   ├── audio_utils.dart
+│   │   ├── navigation_utils.dart
+│   │   └── session_utils.dart
+│   └── widgets/              # Reusable UI components
+│       └── common_widgets.dart
 ├── Animations/               # Custom animations
-├── Buttons/                  # Reusable button widgets
+├── Buttons/                  # Legacy UI components
 └── ...
 
 assets/                       # Images, audio, animations
 ├── *.png                    # Images
 ├── *.mp3                    # Audio files
-└── *.riv                    # Rive animations
+├── *.riv                    # Rive animations
+├── Smell/                   # Smell exercise images
+└── Taste/                   # Taste exercise images
 ```
 
 ### 🎯 Code Style Guidelines
@@ -138,6 +154,20 @@ assets/                       # Images, audio, animations
 4. **Error handling**
    - Always handle potential errors gracefully
    - Provide meaningful error messages
+
+5. **Use the new architecture system**
+   - Import constants from `core/constants/app_constants.dart`
+   - Use utility functions from `core/utils/` 
+   - Leverage common widgets from `core/widgets/common_widgets.dart`
+   - Follow the modular patterns established in refactored screens
+
+### 🏗️ Architecture Guidelines
+
+- **Constants**: Use `AppColors`, `AppTextStyles`, `AppSizes` instead of hardcoded values
+- **Widgets**: Use `AppElevatedButton`, `AppTextButton`, `ScreenHeader` for consistency  
+- **Navigation**: Use `NavigationUtils.navigateToScreen()` for screen transitions
+- **Audio**: Use `AudioUtils` methods for audio management
+- **Sessions**: Use `SessionUtils` for timing and session tracking
 
 ### 🎨 UI/UX Guidelines
 
